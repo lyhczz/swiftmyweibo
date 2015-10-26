@@ -15,6 +15,7 @@
 		222EE7D51BDE4A2400B74B33 /* YHMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D41BDE4A2400B74B33 /* YHMessageController.swift */; settings = {ASSET_TAGS = (); }; };
 		222EE7D71BDE4A3900B74B33 /* YHDiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D61BDE4A3800B74B33 /* YHDiscoverController.swift */; settings = {ASSET_TAGS = (); }; };
 		222EE7D91BDE4A4D00B74B33 /* YHProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D81BDE4A4D00B74B33 /* YHProfileController.swift */; settings = {ASSET_TAGS = (); }; };
+		222EE7DB1BDE54C000B74B33 /* YHMainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7DA1BDE54C000B74B33 /* YHMainTabBar.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		222EE7D41BDE4A2400B74B33 /* YHMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHMessageController.swift; path = Myweibo/YHMessageController.swift; sourceTree = SOURCE_ROOT; };
 		222EE7D61BDE4A3800B74B33 /* YHDiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHDiscoverController.swift; path = Myweibo/YHDiscoverController.swift; sourceTree = SOURCE_ROOT; };
 		222EE7D81BDE4A4D00B74B33 /* YHProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHProfileController.swift; path = Myweibo/YHProfileController.swift; sourceTree = SOURCE_ROOT; };
+		222EE7DA1BDE54C000B74B33 /* YHMainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHMainTabBar.swift; path = Myweibo/YHMainTabBar.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 		222EE7C41BDE48D300B74B33 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				222EE7DA1BDE54C000B74B33 /* YHMainTabBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222EE7DB1BDE54C000B74B33 /* YHMainTabBar.swift in Sources */,
 				222EE7D91BDE4A4D00B74B33 /* YHProfileController.swift in Sources */,
 				222EE7D11BDE49B600B74B33 /* YHTabBarController.swift in Sources */,
 				222EE7A41BDE368A00B74B33 /* AppDelegate.swift in Sources */,

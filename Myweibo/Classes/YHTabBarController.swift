@@ -25,30 +25,59 @@ class YHTabBarController: UITabBarController {
         
         // 首页
         let homeVC = YHHomeController()
-        addChildViewController(homeVC, title: "首页", imageName: "tabbar_home", selImageName: "tabbar_home_highlighted")
+        addChildViewController(homeVC, title: "首页", imageName: "tabbar_home")
         
         // 消息
         let messageVC = YHHomeController()
-        addChildViewController(messageVC, title: "消息", imageName: "tabbar_message_center", selImageName: "tabbar_message_center_highlighted")
+        addChildViewController(messageVC, title: "消息", imageName: "tabbar_message_center")
+        
+        // 占位的按钮
+        addChildViewController(UIViewController(), title: "", imageName: "")
         
         // 发现
         let discoverVC = YHHomeController()
-        addChildViewController(discoverVC, title: "发现", imageName: "tabbar_discover", selImageName: "tabbar_discover_highlighted")
+        addChildViewController(discoverVC, title: "发现", imageName: "tabbar_discover")
         
         // 我
         let profileVC = YHHomeController()
-        addChildViewController(profileVC, title: "我", imageName: "tabbar_profile", selImageName: "tabbar_profile_highlighted")
+        addChildViewController(profileVC, title: "我", imageName: "tabbar_profile")
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 添加撰写按钮
+        let width = tabBar.bounds.width / 5
+        composeButton.frame = CGRect(x: width * 2, y: 0, width: width, height: tabBar.bounds.height)
+        tabBar.addSubview(composeButton)
+    }
+    
     /// 设置子控制器
-    private func addChildViewController(controller: UIViewController, title: String, imageName: String, selImageName: String) {
+    private func addChildViewController(controller: UIViewController, title: String, imageName: String) {
         
         controller.title = title
         controller.tabBarItem.image = UIImage(named: imageName)
-        controller.tabBarItem.selectedImage = UIImage(named: selImageName)
         let nav = UINavigationController(rootViewController: controller)
         addChildViewController(nav)
     }
+    
+    
+    // MARK: - 懒加载
+    lazy var composeButton: UIButton = {
+        
+        let button = UIButton()
+        
+        // 设置图片
+        button.setImage(UIImage(named: "tabbar_compose_icon_add"), forState: UIControlState.Normal)
+        button.setImage(UIImage(named: "tabbar_compose_icon_add_highlighted"), forState: UIControlState.Highlighted)
+        
+        // 设置背景图片
+        button.setBackgroundImage(UIImage(named: "tabbar_compose_button"), forState: UIControlState.Normal)
+        button.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), forState: UIControlState.Highlighted)
+        
+        return button
+        
+    }()
 
 }
