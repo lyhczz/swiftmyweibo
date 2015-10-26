@@ -8,18 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		222EE7A41BDE368A00B74B33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7A31BDE368A00B74B33 /* AppDelegate.swift */; };
-		222EE7A61BDE368A00B74B33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7A51BDE368A00B74B33 /* ViewController.swift */; };
 		222EE7AB1BDE368B00B74B33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 222EE7AA1BDE368B00B74B33 /* Assets.xcassets */; };
 		222EE7AE1BDE368B00B74B33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222EE7AC1BDE368B00B74B33 /* LaunchScreen.storyboard */; };
+		222EE7D11BDE49B600B74B33 /* YHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D01BDE49B600B74B33 /* YHTabBarController.swift */; settings = {ASSET_TAGS = (); }; };
+		222EE7D31BDE4A0F00B74B33 /* YHHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D21BDE4A0F00B74B33 /* YHHomeController.swift */; settings = {ASSET_TAGS = (); }; };
+		222EE7D51BDE4A2400B74B33 /* YHMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D41BDE4A2400B74B33 /* YHMessageController.swift */; settings = {ASSET_TAGS = (); }; };
+		222EE7D71BDE4A3900B74B33 /* YHDiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D61BDE4A3800B74B33 /* YHDiscoverController.swift */; settings = {ASSET_TAGS = (); }; };
+		222EE7D91BDE4A4D00B74B33 /* YHProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D81BDE4A4D00B74B33 /* YHProfileController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		222EE7A01BDE368A00B74B33 /* Myweibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Myweibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222EE7A31BDE368A00B74B33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		222EE7A51BDE368A00B74B33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		222EE7AA1BDE368B00B74B33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		222EE7AD1BDE368B00B74B33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		222EE7AF1BDE368B00B74B33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		222EE7D01BDE49B600B74B33 /* YHTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHTabBarController.swift; path = Myweibo/Classes/YHTabBarController.swift; sourceTree = SOURCE_ROOT; };
+		222EE7D21BDE4A0F00B74B33 /* YHHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHHomeController.swift; path = Myweibo/Classes/YHHomeController.swift; sourceTree = SOURCE_ROOT; };
+		222EE7D41BDE4A2400B74B33 /* YHMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHMessageController.swift; path = Myweibo/YHMessageController.swift; sourceTree = SOURCE_ROOT; };
+		222EE7D61BDE4A3800B74B33 /* YHDiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHDiscoverController.swift; path = Myweibo/YHDiscoverController.swift; sourceTree = SOURCE_ROOT; };
+		222EE7D81BDE4A4D00B74B33 /* YHProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHProfileController.swift; path = Myweibo/YHProfileController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,12 +61,238 @@
 			isa = PBXGroup;
 			children = (
 				222EE7A31BDE368A00B74B33 /* AppDelegate.swift */,
-				222EE7A51BDE368A00B74B33 /* ViewController.swift */,
+				222EE7B51BDE48D300B74B33 /* Classes */,
 				222EE7AA1BDE368B00B74B33 /* Assets.xcassets */,
 				222EE7AC1BDE368B00B74B33 /* LaunchScreen.storyboard */,
 				222EE7AF1BDE368B00B74B33 /* Info.plist */,
 			);
 			path = Myweibo;
+			sourceTree = "<group>";
+		};
+		222EE7B51BDE48D300B74B33 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7B61BDE48D300B74B33 /* Extension */,
+				222EE7B71BDE48D300B74B33 /* Library */,
+				222EE7B81BDE48D300B74B33 /* Model */,
+				222EE7CE1BDE48D300B74B33 /* Module */,
+				222EE7CF1BDE48D300B74B33 /* Tool */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		222EE7B61BDE48D300B74B33 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		222EE7B71BDE48D300B74B33 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		222EE7B81BDE48D300B74B33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		222EE7B91BDE48D300B74B33 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7BA1BDE48D300B74B33 /* Controller */,
+				222EE7BB1BDE48D300B74B33 /* model */,
+				222EE7BC1BDE48D300B74B33 /* View */,
+			);
+			name = Discover;
+			path = ../Model/Discover;
+			sourceTree = "<group>";
+		};
+		222EE7BA1BDE48D300B74B33 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7D61BDE4A3800B74B33 /* YHDiscoverController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		222EE7BB1BDE48D300B74B33 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		222EE7BC1BDE48D300B74B33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		222EE7BD1BDE48D300B74B33 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7BE1BDE48D300B74B33 /* Controller */,
+				222EE7BF1BDE48D300B74B33 /* model */,
+				222EE7C01BDE48D300B74B33 /* View */,
+			);
+			name = Home;
+			path = ../Model/Home;
+			sourceTree = "<group>";
+		};
+		222EE7BE1BDE48D300B74B33 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7D21BDE4A0F00B74B33 /* YHHomeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		222EE7BF1BDE48D300B74B33 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		222EE7C01BDE48D300B74B33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		222EE7C11BDE48D300B74B33 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7C21BDE48D300B74B33 /* Controller */,
+				222EE7C31BDE48D300B74B33 /* model */,
+				222EE7C41BDE48D300B74B33 /* View */,
+			);
+			name = Main;
+			path = ../Model/Main;
+			sourceTree = "<group>";
+		};
+		222EE7C21BDE48D300B74B33 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7D01BDE49B600B74B33 /* YHTabBarController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		222EE7C31BDE48D300B74B33 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		222EE7C41BDE48D300B74B33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		222EE7C51BDE48D300B74B33 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7C61BDE48D300B74B33 /* Controller */,
+				222EE7C71BDE48D300B74B33 /* model */,
+				222EE7C81BDE48D300B74B33 /* View */,
+			);
+			name = Message;
+			path = ../Model/Message;
+			sourceTree = "<group>";
+		};
+		222EE7C61BDE48D300B74B33 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7D41BDE4A2400B74B33 /* YHMessageController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		222EE7C71BDE48D300B74B33 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		222EE7C81BDE48D300B74B33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		222EE7C91BDE48D300B74B33 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7CA1BDE48D300B74B33 /* Controller */,
+				222EE7CB1BDE48D300B74B33 /* model */,
+				222EE7CC1BDE48D300B74B33 /* View */,
+			);
+			name = Profile;
+			path = ../Model/Profile;
+			sourceTree = "<group>";
+		};
+		222EE7CA1BDE48D300B74B33 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7D81BDE4A4D00B74B33 /* YHProfileController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		222EE7CB1BDE48D300B74B33 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		222EE7CC1BDE48D300B74B33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		222EE7CD1BDE48D300B74B33 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Test;
+			path = ../Model/Test;
+			sourceTree = "<group>";
+		};
+		222EE7CE1BDE48D300B74B33 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				222EE7C11BDE48D300B74B33 /* Main */,
+				222EE7BD1BDE48D300B74B33 /* Home */,
+				222EE7C51BDE48D300B74B33 /* Message */,
+				222EE7B91BDE48D300B74B33 /* Discover */,
+				222EE7C91BDE48D300B74B33 /* Profile */,
+				222EE7CD1BDE48D300B74B33 /* Test */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		222EE7CF1BDE48D300B74B33 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +321,7 @@
 		222EE7981BDE368A00B74B33 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = YH;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = mposhh;
 				TargetAttributes = {
@@ -130,8 +365,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				222EE7A61BDE368A00B74B33 /* ViewController.swift in Sources */,
+				222EE7D91BDE4A4D00B74B33 /* YHProfileController.swift in Sources */,
+				222EE7D11BDE49B600B74B33 /* YHTabBarController.swift in Sources */,
 				222EE7A41BDE368A00B74B33 /* AppDelegate.swift in Sources */,
+				222EE7D51BDE4A2400B74B33 /* YHMessageController.swift in Sources */,
+				222EE7D71BDE4A3900B74B33 /* YHDiscoverController.swift in Sources */,
+				222EE7D31BDE4A0F00B74B33 /* YHHomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
