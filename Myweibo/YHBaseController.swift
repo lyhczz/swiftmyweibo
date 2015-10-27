@@ -28,7 +28,7 @@ class YHBaseController: UITableViewController {
         view = vistorView
         
         if self is YHHomeController {
-            
+            vistorView.startRotationAnimation()
         }else if self is YHMessageController {
             vistorView.setupInfo("visitordiscover_image_message", titlt: "登录后，别人评论你的微博，发给你的消息，都会在这里收到通知")
         } else if self is YHDiscoverController {

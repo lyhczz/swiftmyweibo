@@ -40,6 +40,19 @@ class YHVistorView: UIView {
         // 遮盖放到最小面
         sendSubviewToBack(converView)
     }
+    
+    /// 旋转动画
+    func startRotationAnimation() {
+        // 创建动画
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.toValue = 2 * M_PI
+        animation.duration = 20
+        animation.repeatCount = MAXFLOAT
+        animation.removedOnCompletion = false
+        
+        iconView.layer.addAnimation(animation, forKey: "homeRotation")
+        
+    }
 
     // MARK: - 准备UI
     private func prepareUI() {
