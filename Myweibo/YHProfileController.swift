@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YHProfileController: UITableViewController {
+class YHProfileController: YHBaseController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -16,6 +16,8 @@
 		222EE7D71BDE4A3900B74B33 /* YHDiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D61BDE4A3800B74B33 /* YHDiscoverController.swift */; settings = {ASSET_TAGS = (); }; };
 		222EE7D91BDE4A4D00B74B33 /* YHProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D81BDE4A4D00B74B33 /* YHProfileController.swift */; settings = {ASSET_TAGS = (); }; };
 		222EE7DB1BDE54C000B74B33 /* YHMainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7DA1BDE54C000B74B33 /* YHMainTabBar.swift */; settings = {ASSET_TAGS = (); }; };
+		22D25C7E1BDF08240062C168 /* YHBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D25C7D1BDF08240062C168 /* YHBaseController.swift */; settings = {ASSET_TAGS = (); }; };
+		22D25C801BDF0B290062C168 /* YHVistorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D25C7F1BDF0B290062C168 /* YHVistorView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		222EE7D61BDE4A3800B74B33 /* YHDiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHDiscoverController.swift; path = Myweibo/YHDiscoverController.swift; sourceTree = SOURCE_ROOT; };
 		222EE7D81BDE4A4D00B74B33 /* YHProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHProfileController.swift; path = Myweibo/YHProfileController.swift; sourceTree = SOURCE_ROOT; };
 		222EE7DA1BDE54C000B74B33 /* YHMainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHMainTabBar.swift; path = Myweibo/YHMainTabBar.swift; sourceTree = SOURCE_ROOT; };
+		22D25C7D1BDF08240062C168 /* YHBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHBaseController.swift; path = Myweibo/YHBaseController.swift; sourceTree = SOURCE_ROOT; };
+		22D25C7F1BDF0B290062C168 /* YHVistorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHVistorView.swift; path = Myweibo/YHVistorView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				222EE7D01BDE49B600B74B33 /* YHTabBarController.swift */,
+				22D25C7D1BDF08240062C168 /* YHBaseController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				222EE7DA1BDE54C000B74B33 /* YHMainTabBar.swift */,
+				22D25C7F1BDF0B290062C168 /* YHVistorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -369,8 +375,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				222EE7DB1BDE54C000B74B33 /* YHMainTabBar.swift in Sources */,
+				22D25C7E1BDF08240062C168 /* YHBaseController.swift in Sources */,
 				222EE7D91BDE4A4D00B74B33 /* YHProfileController.swift in Sources */,
 				222EE7D11BDE49B600B74B33 /* YHTabBarController.swift in Sources */,
+				22D25C801BDF0B290062C168 /* YHVistorView.swift in Sources */,
 				222EE7A41BDE368A00B74B33 /* AppDelegate.swift in Sources */,
 				222EE7D51BDE4A2400B74B33 /* YHMessageController.swift in Sources */,
 				222EE7D71BDE4A3900B74B33 /* YHDiscoverController.swift in Sources */,
@@ -522,6 +530,7 @@
 				222EE7B41BDE368B00B74B33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

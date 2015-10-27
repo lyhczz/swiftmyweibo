@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YHMessageController: UITableViewController {
+class YHMessageController: YHBaseController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

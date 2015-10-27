@@ -28,18 +28,18 @@ class YHTabBarController: UITabBarController {
         addChildViewController(homeVC, title: "首页", imageName: "tabbar_home")
         
         // 消息
-        let messageVC = YHHomeController()
+        let messageVC = YHMessageController()
         addChildViewController(messageVC, title: "消息", imageName: "tabbar_message_center")
         
         // 占位的按钮
         addChildViewController(UIViewController(), title: "", imageName: "")
         
         // 发现
-        let discoverVC = YHHomeController()
+        let discoverVC = YHDiscoverController()
         addChildViewController(discoverVC, title: "发现", imageName: "tabbar_discover")
         
         // 我
-        let profileVC = YHHomeController()
+        let profileVC = YHProfileController()
         addChildViewController(profileVC, title: "我", imageName: "tabbar_profile")
         
     }
