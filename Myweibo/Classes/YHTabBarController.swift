@@ -21,7 +21,7 @@ class YHTabBarController: UITabBarController {
     /// 添加四个子控制器
     private func addChildViews() {
         // 设置颜色
-        tabBar.tintColor = UIColor.orangeColor()
+//        tabBar.tintColor = UIColor.orangeColor()
         
         // 首页
         let homeVC = YHHomeController()

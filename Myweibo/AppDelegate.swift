@@ -22,12 +22,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = YHTabBarController()
         
+        setupAppearance()
+        
         // 设置为主窗口
         window?.makeKeyAndVisible()
         return true
     }
 
-
+    /// 设置全局外观
+    private func setupAppearance() {
+        UINavigationBar.appearance().tintColor = UIColor.orangeColor()
+        UITabBar.appearance().tintColor = UIColor.orangeColor()
+    }
 
 }
 
