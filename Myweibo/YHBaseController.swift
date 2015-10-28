@@ -16,7 +16,9 @@ class YHBaseController: UITableViewController {
         super.viewDidLoad()
         
     }
-
+    
+    
+    
     override func loadView() {
         
         userLogin ? super.loadView() : setupVistorView()
@@ -26,6 +28,7 @@ class YHBaseController: UITableViewController {
     private func setupVistorView() {
         let vistorView = YHVistorView()
         view = vistorView
+       
         
         if self is YHHomeController {
             vistorView.startRotationAnimation()
@@ -36,6 +39,28 @@ class YHBaseController: UITableViewController {
         } else if self is YHProfileController {
             vistorView.setupInfo("visitordiscover_image_profile", titlt: "登录后，你的微博、相册、个人资料会显示在这里，展示给别人")
         }
+        // 成为代理
+        vistorView.vistorViewDelegate = self
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: UIBarButtonItemStyle.Plain, target: self, action: "vistorViewWillRegister")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登陆", style: UIBarButtonItemStyle.Plain, target: self, action: "vistorViewWillLogin")
     }
-
 }
+
+// MARK: - CZBaseTableViewController 扩展,实现 CZVistorViewDelegate 协议
+extension YHBaseController: YHVistorViewDelegate {
+    
+    func vistorViewWillLogin() {
+        print(__FUNCTION__)
+    }
+    
+    func vistorViewWillRegister() {
+        print(__FUNCTION__)
+    }
+}
+
+
+
+
+
+

@@ -8,20 +8,39 @@
 
 import UIKit
 
+protocol YHVistorViewDelegate: NSObjectProtocol {
+    func vistorViewWillRegister()
+    func vistorViewWillLogin()
+}
+
+
 class YHVistorView: UIView {
 
+    // 按钮点击代理
+    weak var vistorViewDelegate: YHVistorViewDelegate?
+    
+    // MARK: - 按钮点击事件
+    func registerDidClick() {
+        vistorViewDelegate?.vistorViewWillRegister()
+    }
+    
+    func loginDidClick() {
+        vistorViewDelegate?.vistorViewWillLogin()
+    }
+    
+    // MARK: - 构造方法
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         // 准备UI
         prepareUI()
         
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - 外部调用方法
     /**
     不同页面设置不同信息
     首页不用设置
@@ -138,6 +157,7 @@ class YHVistorView: UIView {
         button.setTitle("注册", forState: UIControlState.Normal)
         button.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
         button.setBackgroundImage(UIImage(named: "common_button_white_disable"), forState: UIControlState.Normal)
+        button.addTarget(self, action: "registerDidClick", forControlEvents: UIControlEvents.TouchUpInside)
         return button
     }()
     
@@ -147,6 +167,7 @@ class YHVistorView: UIView {
         button.setTitle("登陆", forState: UIControlState.Normal)
         button.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
         button.setBackgroundImage(UIImage(named: "common_button_white_disable"), forState: UIControlState.Normal)
+        button.addTarget(self, action: "loginDidClick", forControlEvents: UIControlEvents.TouchUpInside)
         return button
         }()
     
