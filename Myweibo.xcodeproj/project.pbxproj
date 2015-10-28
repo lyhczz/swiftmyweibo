@@ -18,6 +18,7 @@
 		222EE7DB1BDE54C000B74B33 /* YHMainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7DA1BDE54C000B74B33 /* YHMainTabBar.swift */; settings = {ASSET_TAGS = (); }; };
 		22D25C7E1BDF08240062C168 /* YHBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D25C7D1BDF08240062C168 /* YHBaseController.swift */; settings = {ASSET_TAGS = (); }; };
 		22D25C801BDF0B290062C168 /* YHVistorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D25C7F1BDF0B290062C168 /* YHVistorView.swift */; settings = {ASSET_TAGS = (); }; };
+		2A3A798B71892629C3B47F29 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE98450B0AD42E98A5B26E13 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,9 @@
 		222EE7DA1BDE54C000B74B33 /* YHMainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHMainTabBar.swift; path = Myweibo/YHMainTabBar.swift; sourceTree = SOURCE_ROOT; };
 		22D25C7D1BDF08240062C168 /* YHBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHBaseController.swift; path = Myweibo/YHBaseController.swift; sourceTree = SOURCE_ROOT; };
 		22D25C7F1BDF0B290062C168 /* YHVistorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHVistorView.swift; path = Myweibo/YHVistorView.swift; sourceTree = SOURCE_ROOT; };
+		777B80C2E315FF28DDA2CE65 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B62728D0CF43F4993B938692 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BE98450B0AD42E98A5B26E13 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A3A798B71892629C3B47F29 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +57,8 @@
 			children = (
 				222EE7A21BDE368A00B74B33 /* Myweibo */,
 				222EE7A11BDE368A00B74B33 /* Products */,
+				3C05A25F6B764E66E26730CC /* Pods */,
+				2670940E4ADBBB8E825A439C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -304,6 +311,23 @@
 			path = Tool;
 			sourceTree = "<group>";
 		};
+		2670940E4ADBBB8E825A439C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE98450B0AD42E98A5B26E13 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3C05A25F6B764E66E26730CC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B62728D0CF43F4993B938692 /* Pods.debug.xcconfig */,
+				777B80C2E315FF28DDA2CE65 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -311,9 +335,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 222EE7B21BDE368B00B74B33 /* Build configuration list for PBXNativeTarget "Myweibo" */;
 			buildPhases = (
+				9C686F469CC51DA68F376051 /* Check Pods Manifest.lock */,
 				222EE79C1BDE368A00B74B33 /* Sources */,
 				222EE79D1BDE368A00B74B33 /* Frameworks */,
 				222EE79E1BDE368A00B74B33 /* Resources */,
+				46A1DBDA57C0984DBDCB1D93 /* Embed Pods Frameworks */,
+				DBAB2A6C8E6EC3C59D1E6FB3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -368,6 +395,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		46A1DBDA57C0984DBDCB1D93 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C686F469CC51DA68F376051 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DBAB2A6C8E6EC3C59D1E6FB3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		222EE79C1BDE368A00B74B33 /* Sources */ = {
@@ -485,6 +560,7 @@
 		};
 		222EE7B31BDE368B00B74B33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B62728D0CF43F4993B938692 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
@@ -499,6 +575,7 @@
 		};
 		222EE7B41BDE368B00B74B33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 777B80C2E315FF28DDA2CE65 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
