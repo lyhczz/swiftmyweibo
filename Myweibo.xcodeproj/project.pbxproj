@@ -16,6 +16,9 @@
 		222EE7D71BDE4A3900B74B33 /* YHDiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D61BDE4A3800B74B33 /* YHDiscoverController.swift */; settings = {ASSET_TAGS = (); }; };
 		222EE7D91BDE4A4D00B74B33 /* YHProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7D81BDE4A4D00B74B33 /* YHProfileController.swift */; settings = {ASSET_TAGS = (); }; };
 		222EE7DB1BDE54C000B74B33 /* YHMainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EE7DA1BDE54C000B74B33 /* YHMainTabBar.swift */; settings = {ASSET_TAGS = (); }; };
+		223952921BE0DBBE00AF2718 /* Networktools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223952911BE0DBBE00AF2718 /* Networktools.swift */; settings = {ASSET_TAGS = (); }; };
+		223952951BE0E72F00AF2718 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223952941BE0E72F00AF2718 /* OAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		22594A3A1BE1DD7D00E82EB5 /* YHUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */; settings = {ASSET_TAGS = (); }; };
 		22D25C7E1BDF08240062C168 /* YHBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D25C7D1BDF08240062C168 /* YHBaseController.swift */; settings = {ASSET_TAGS = (); }; };
 		22D25C801BDF0B290062C168 /* YHVistorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D25C7F1BDF0B290062C168 /* YHVistorView.swift */; settings = {ASSET_TAGS = (); }; };
 		2A3A798B71892629C3B47F29 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE98450B0AD42E98A5B26E13 /* Pods.framework */; };
@@ -33,6 +36,9 @@
 		222EE7D61BDE4A3800B74B33 /* YHDiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHDiscoverController.swift; path = Myweibo/YHDiscoverController.swift; sourceTree = SOURCE_ROOT; };
 		222EE7D81BDE4A4D00B74B33 /* YHProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHProfileController.swift; path = Myweibo/YHProfileController.swift; sourceTree = SOURCE_ROOT; };
 		222EE7DA1BDE54C000B74B33 /* YHMainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHMainTabBar.swift; path = Myweibo/YHMainTabBar.swift; sourceTree = SOURCE_ROOT; };
+		223952911BE0DBBE00AF2718 /* Networktools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networktools.swift; sourceTree = "<group>"; };
+		223952941BE0E72F00AF2718 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUserAccount.swift; sourceTree = "<group>"; };
 		22D25C7D1BDF08240062C168 /* YHBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHBaseController.swift; path = Myweibo/YHBaseController.swift; sourceTree = SOURCE_ROOT; };
 		22D25C7F1BDF0B290062C168 /* YHVistorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHVistorView.swift; path = Myweibo/YHVistorView.swift; sourceTree = SOURCE_ROOT; };
 		777B80C2E315FF28DDA2CE65 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 				222EE7B71BDE48D300B74B33 /* Library */,
 				222EE7B81BDE48D300B74B33 /* Model */,
 				222EE7CE1BDE48D300B74B33 /* Module */,
+				223952931BE0E6F800AF2718 /* OAuth */,
 				222EE7CF1BDE48D300B74B33 /* Tool */,
 			);
 			path = Classes;
@@ -111,6 +118,7 @@
 		222EE7B81BDE48D300B74B33 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,8 +315,17 @@
 		222EE7CF1BDE48D300B74B33 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				223952911BE0DBBE00AF2718 /* Networktools.swift */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		223952931BE0E6F800AF2718 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				223952941BE0E72F00AF2718 /* OAuthViewController.swift */,
+			);
+			path = OAuth;
 			sourceTree = "<group>";
 		};
 		2670940E4ADBBB8E825A439C /* Frameworks */ = {
@@ -455,8 +472,11 @@
 				222EE7D11BDE49B600B74B33 /* YHTabBarController.swift in Sources */,
 				22D25C801BDF0B290062C168 /* YHVistorView.swift in Sources */,
 				222EE7A41BDE368A00B74B33 /* AppDelegate.swift in Sources */,
+				223952921BE0DBBE00AF2718 /* Networktools.swift in Sources */,
+				22594A3A1BE1DD7D00E82EB5 /* YHUserAccount.swift in Sources */,
 				222EE7D51BDE4A2400B74B33 /* YHMessageController.swift in Sources */,
 				222EE7D71BDE4A3900B74B33 /* YHDiscoverController.swift in Sources */,
+				223952951BE0E72F00AF2718 /* OAuthViewController.swift in Sources */,
 				222EE7D31BDE4A0F00B74B33 /* YHHomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

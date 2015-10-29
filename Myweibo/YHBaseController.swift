@@ -51,7 +51,10 @@ class YHBaseController: UITableViewController {
 extension YHBaseController: YHVistorViewDelegate {
     
     func vistorViewWillLogin() {
-        print(__FUNCTION__)
+        let oauthVC = OAuthViewController()
+        let nav = UINavigationController(rootViewController: oauthVC)
+        presentViewController(nav, animated: true, completion: nil)
+        
     }
     
     func vistorViewWillRegister() {
