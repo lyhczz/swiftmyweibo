@@ -51,20 +51,35 @@ class YHUserAccount: NSObject, NSCoding {
         print(YHUserAccount.accountPath)
     }
     
+    // 静态属性
+    private static var userAccount: YHUserAccount?
     /// 加载对象
     class func loadAccount() -> YHUserAccount? {
-        
-        if let account = NSKeyedUnarchiver.unarchiveObjectWithFile(accountPath) as? YHUserAccount {
-            // 判断数据是否过期
-            if account.expiresDate?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
-                // 没有过期
-                return account
-            }
+//        if let account = NSKeyedUnarchiver.unarchiveObjectWithFile(accountPath) as? YHUserAccount {
+//            // 判断数据是否过期
+//            if account.expiresDate?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+//                // 没有过期
+//                return account
+//            }
+//        }
+        if userAccount == nil {
+            // 不存在，解档，但是仍然可能为空
+            userAccount = NSKeyedUnarchiver.unarchiveObjectWithFile(accountPath) as? YHUserAccount
         }
+        if userAccount != nil && userAccount?.expiresDate?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+            print("有效账户")
+            return userAccount
+        }
+        
         // 数据已过期，返回nil
         return nil
-        
     }
+    
+    
+    
+    
+    
+    
     
     // MARK: - 归档和解档
     /// 归档
