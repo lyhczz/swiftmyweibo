@@ -105,7 +105,8 @@ extension OAuthViewController:UIWebViewDelegate {
             // 字典转模型
             let account = YHUserAccount(dict: result!)
             print("account:\(account)")
-            
+            // 保存模型
+            account.saveAccount()
         }
     }
 }
