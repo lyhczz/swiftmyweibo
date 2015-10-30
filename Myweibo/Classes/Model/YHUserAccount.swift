@@ -23,6 +23,16 @@ class YHUserAccount: NSObject, NSCoding {
             self.expiresDate = NSDate(timeIntervalSinceNow: expires_in)
         }
     }
+    /// 友好显示名称
+    var name: String?
+    /// 用户头像地址180*180
+    var avatar_large: String?
+    
+    
+    override var description: String {
+        let properties = ["access_token", "expires_in", "expiresDate", "uid","name","avatar_large"]
+        return "\(dictionaryWithValuesForKeys(properties))"
+    }
     
     // MARK: - 构造方法
     /// 字典转模型
@@ -31,10 +41,7 @@ class YHUserAccount: NSObject, NSCoding {
         setValuesForKeysWithDictionary(dict)
     }
     
-    override var description: String {
-        let properties = ["access_token", "expires_in", "expiresDate", "uid"]
-        return "\(dictionaryWithValuesForKeys(properties))"
-    }
+    
     
     // 当字典的key在模型中没有找到对应的属性时
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {
@@ -75,8 +82,26 @@ class YHUserAccount: NSObject, NSCoding {
         return nil
     }
     
-    
-    
+    // MARK: - 加载用户信息
+    // https://api.weibo.com/2/users/show.json?access_token=2.00A4b3DCr1h95E9f4640c35b_G5BVC&uid=1881981542
+    // 加载和处理用户信息
+    func loadUeserInfo(finshed:(erroe: NSError?) -> ()) {
+        Networktools.shareInstance.loadUserInfo { (result, error) -> () in
+            // 加载失败
+            if error != nil || result == nil {
+                finshed(erroe: error)
+                return
+            }
+            // 加载成功
+            self.name = result!["name"] as? String
+            self.avatar_large = result!["avatar_large"] as? String
+            // 保存数据
+            self.saveAccount()
+            
+            finshed(erroe: nil)
+            
+        }
+    }
     
     
     
@@ -87,7 +112,9 @@ class YHUserAccount: NSObject, NSCoding {
         aCoder.encodeObject(access_token, forKey: "access_token")
         aCoder.encodeObject(uid, forKey: "uid")
         aCoder.encodeObject(expiresDate, forKey: "expiresDate")
-        aCoder.encodeObject(expires_in, forKey: "expires_in")
+        aCoder.encodeDouble(expires_in, forKey: "expires_in")
+        aCoder.encodeObject(name, forKey: "name")
+        aCoder.encodeObject(avatar_large, forKey: "avatar_large")
     }
     
     /// 解档
@@ -96,6 +123,8 @@ class YHUserAccount: NSObject, NSCoding {
         uid = (aDecoder.decodeObjectForKey("uid") as! String)
         expiresDate = (aDecoder.decodeObjectForKey("expiresDate") as! NSDate)
         expires_in = aDecoder.decodeDoubleForKey("expires_in")
+        name = aDecoder.decodeObjectForKey("name") as? String
+        avatar_large = aDecoder.decodeObjectForKey("avatar_large") as? String
     }
     
     

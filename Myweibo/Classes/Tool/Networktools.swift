@@ -57,7 +57,33 @@ class Networktools: AFHTTPSessionManager {
                 finshed(result: nil, error: error)
                 print(result)
         }
+    }
+    
+    // MARK: - 加载用户数据
+    /// 加载用户数据，负责获取数据
+    func loadUserInfo(finshed:(result: [String:AnyObject]?,error: NSError?) -> ()) {
+        // 判断access.token是否存在
+        if YHUserAccount.loadAccount()?.access_token == nil {
+            print("没有access_token")
+            return
+        }
         
+        // 判断uid是否存在
+        if YHUserAccount.loadAccount()?.uid == nil {
+            print("没有UID")
+            return
+        }
+        
+        // url
+        let urlString = "2/users/show.json"
+        // 参数
+        let parameters = ["access_token": YHUserAccount.loadAccount()!.access_token!,"uid": YHUserAccount.loadAccount()!.uid!]
+        // 用GET发送请求
+        GET(urlString, parameters: parameters, success: { (_, result) -> Void in
+            finshed(result: result as? [String : AnyObject], error: nil)
+            }) { (_, error) -> Void in
+                finshed(result: nil, error: error)
+        }
     }
     
 }

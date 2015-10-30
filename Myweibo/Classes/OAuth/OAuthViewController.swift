@@ -93,11 +93,12 @@ extension OAuthViewController:UIWebViewDelegate {
             
             if error != nil || result == nil {
                 // 提示授权失败
-                SVProgressHUD.showErrorWithStatus("授权失败")
-                // 1秒后关闭提示框
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
-                    self.close()
-                })
+//                SVProgressHUD.showErrorWithStatus("授权失败")
+//                // 1秒后关闭提示框
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+//                    self.close()
+//                })
+                self.netError("授权失败")
                 return
             }
             
@@ -107,7 +108,30 @@ extension OAuthViewController:UIWebViewDelegate {
             print("account:\(account)")
             // 保存模型
             account.saveAccount()
+            
+            // 加载用户信息
+            account.loadUeserInfo({ (erroe) -> () in
+                // 失败
+                if error != nil {
+                    self.netError("加载用户信息出错")
+                    return
+                }
+                
+                // 成功
+                self.close()
+                print("account\(account)")
+            })
         }
+    }
+    /// 提示网络加载出错
+    private func netError(message: String) {
+        
+        SVProgressHUD.showErrorWithStatus(message, maskType: SVProgressHUDMaskType.Black)
+        // 1秒后关闭提示框
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+            self.close()
+        })
+
     }
 }
 
