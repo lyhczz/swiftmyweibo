@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class YHWelconeViewController: UIViewController {
 
@@ -18,6 +19,11 @@ class YHWelconeViewController: UIViewController {
         super.viewDidLoad()
         
         prepareUI()
+        
+        // 设置头像图片
+        if let urlString = YHUserAccount.loadAccount()?.avatar_large {
+            iconView.sd_setImageWithURL(NSURL(string: urlString), placeholderImage: UIImage(named: "avatar_default_big"))
+        }
     }
     
 
