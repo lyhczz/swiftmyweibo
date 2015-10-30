@@ -20,7 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         
-        window?.rootViewController = YHTabBarController()
+//        window?.rootViewController = YHTabBarController()
+//        window?.rootViewController = YHWelconeViewController()
+        window?.rootViewController = YHNewFeatureViewController()
+
         
         setupAppearance()
         
