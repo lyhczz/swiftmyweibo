@@ -9,17 +9,22 @@
 import UIKit
 import AFNetworking
 
-class Networktools: AFHTTPSessionManager {
+class Networktools: NSObject {
 
+    
+    /// AFN 
+    private var afManager: AFHTTPSessionManager
     // 实现单例
-    static let shareInstance: Networktools = {
+    static let shareInstance: Networktools = Networktools()
+    
+    override init() {
         let baseURL = NSURL(string: "https://api.weibo.com/")
-        let tools = Networktools(baseURL: baseURL)
-        
+        afManager = AFHTTPSessionManager(baseURL: baseURL)
         // 设置反序列化数据格式集合(不然服务器会返回错误，因为AFN不支持text/plain)
-        tools.responseSerializer.acceptableContentTypes?.insert("text/plain")
-        return tools
-    }()
+        afManager.responseSerializer.acceptableContentTypes = NSSet(objects: "application/json", "text/json", "text/javascript", "text/plain") as Set<NSObject>
+        super.init()
+
+    }
     
     
 //    https://api.weibo.com/oauth2/authorize?client_id=4026003161&redirect_uri=https://www.baidu.com/
@@ -38,7 +43,7 @@ class Networktools: AFHTTPSessionManager {
     
     // MARK: - 加载Access token
     /// 加载Access token
-    func loadAccessToken(code: String,finshed: (result:[String: AnyObject]?,error: NSError?) -> ()) {
+    func loadAccessToken(code: String,finshed: NetworkFinishedCallback) {
         let URLString = "oauth2/access_token"
         let parameters = [
             "client_id": client_id,
@@ -48,7 +53,7 @@ class Networktools: AFHTTPSessionManager {
             "code": code
         ]
         // 发送请求
-        POST(URLString, parameters: parameters, success: { (_, result) -> Void in
+        afManager.POST(URLString, parameters: parameters, success: { (_, result) -> Void in
             // 回调
             finshed(result: result as? [String: AnyObject], error: nil)
             
@@ -59,9 +64,10 @@ class Networktools: AFHTTPSessionManager {
         }
     }
     
+    
     // MARK: - 加载用户数据
     /// 加载用户数据，负责获取数据
-    func loadUserInfo(finshed:(result: [String:AnyObject]?,error: NSError?) -> ()) {
+    func loadUserInfo(finshed: NetworkFinishedCallback) {
         // 判断access.token是否存在
         if YHUserAccount.loadAccount()?.access_token == nil {
             print("没有access_token")
@@ -79,10 +85,23 @@ class Networktools: AFHTTPSessionManager {
         // 参数
         let parameters = ["access_token": YHUserAccount.loadAccount()!.access_token!,"uid": YHUserAccount.loadAccount()!.uid!]
         // 用GET发送请求
-        GET(urlString, parameters: parameters, success: { (_, result) -> Void in
+        requestGET(urlString, parameters: parameters, finshed: finshed)
+//        afManager.GET(urlString, parameters: parameters, success: { (_, result) -> Void in
+//            finshed(result: result as? [String : AnyObject], error: nil)
+//            }) { (_, error) -> Void in
+//                finshed(result: nil, error: error)
+//        }
+    }
+    
+    
+    // 类型别名
+    typealias NetworkFinishedCallback = (result: [String: AnyObject]?, error: NSError?) -> ()
+    // MARK: - 封装AFN GET方法
+    func requestGET(URLString: String, parameters: AnyObject?,finshed:NetworkFinishedCallback) {
+        afManager.GET(URLString, parameters: parameters, success: { (_, result) -> Void in
             finshed(result: result as? [String : AnyObject], error: nil)
             }) { (_, error) -> Void in
-                finshed(result: nil, error: error)
+               finshed(result: nil, error: error)
         }
     }
     

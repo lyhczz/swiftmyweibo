@@ -98,6 +98,9 @@ class YHUserAccount: NSObject, NSCoding {
             // 保存数据
             self.saveAccount()
             
+            // 同步到内存
+            YHUserAccount.userAccount = self
+            
             finshed(erroe: nil)
             
         }
