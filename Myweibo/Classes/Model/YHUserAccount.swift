@@ -77,7 +77,7 @@ class YHUserAccount: NSObject, NSCoding {
             userAccount = NSKeyedUnarchiver.unarchiveObjectWithFile(accountPath) as? YHUserAccount
         }
         if userAccount != nil && userAccount?.expiresDate?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
-            print("有效账户")
+//            print("有效账户")
             return userAccount
         }
         

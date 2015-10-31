@@ -7,19 +7,60 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YHHomeController: YHBaseController {
 
+    // MARK: - 属性
+    /// 模型数组
+    var statuses: [YHStatus]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    
+    /// 加载微博数据
+    private func loadStatus() {
+        print("开始加载微博数据")
+        YHStatus.loadStatus { (list, error) -> () in
+            // 判断是否加载成功
+            if error != nil {
+                SVProgressHUD.showErrorWithStatus("加载微博数据出错", maskType: SVProgressHUDMaskType.Black)
+                return
+            }
+            // 将数据赋值给模型数组
+            self.statuses = list
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // 设置NavigationBar
         setNavigationBar()
-        
         // 设置标题
         navigationItem.titleView = titleButton
+        // 加载微博数据
+        loadStatus()
+        // 注册可重用的cell
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
+    // MARK: - tableView数据源和代理方法
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statuses?.count ?? 0
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        cell.textLabel?.text = statuses?[indexPath.row].text
+        
+        return cell
+    }
+    
+    // MARK: - 设置标题栏相关方法
     // 按钮点击事件，改变箭头方向
     @objc private func titleButtonClick() {
         // 改变按钮的选中状态
@@ -44,7 +85,6 @@ class YHHomeController: YHBaseController {
     }
     
     // MARK: - 懒加载控件
-    
     lazy var titleButton: YHHomeTitleView = {
         let name = YHUserAccount.loadAccount()?.name
         let button = YHHomeTitleView(title: name)
