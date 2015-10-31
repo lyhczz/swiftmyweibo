@@ -14,6 +14,7 @@
 		223952951BE0E72F00AF2718 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223952941BE0E72F00AF2718 /* OAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		224C34431BE4849800A42E1B /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C34421BE4849800A42E1B /* UIBarButtonItem+Extension.swift */; settings = {ASSET_TAGS = (); }; };
 		224C34451BE4CE9400A42E1B /* YHHomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C34441BE4CE9400A42E1B /* YHHomeTitleView.swift */; settings = {ASSET_TAGS = (); }; };
+		224C34471BE4DB0D00A42E1B /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */; settings = {ASSET_TAGS = (); }; };
 		22594A3A1BE1DD7D00E82EB5 /* YHUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6421BE399FE00FE8C40 /* YHHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6411BE399FE00FE8C40 /* YHHomeController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6441BE39A0C00FE8C40 /* YHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6431BE39A0C00FE8C40 /* YHTabBarController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -38,6 +39,7 @@
 		223952941BE0E72F00AF2718 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		224C34421BE4849800A42E1B /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		224C34441BE4CE9400A42E1B /* YHHomeTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHHomeTitleView.swift; path = Myweibo/Classes/Extension/YHHomeTitleView.swift; sourceTree = SOURCE_ROOT; };
+		224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUserAccount.swift; sourceTree = "<group>"; };
 		227FB6411BE399FE00FE8C40 /* YHHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHHomeController.swift; path = Myweibo/Classes/Module/Home/Controller/YHHomeController.swift; sourceTree = SOURCE_ROOT; };
 		227FB6431BE39A0C00FE8C40 /* YHTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHTabBarController.swift; path = Myweibo/Classes/Module/Main/Controller/YHTabBarController.swift; sourceTree = SOURCE_ROOT; };
@@ -120,6 +122,7 @@
 		222EE7B71BDE48D300B74B33 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				227FB6441BE39A0C00FE8C40 /* YHTabBarController.swift in Sources */,
+				224C34471BE4DB0D00A42E1B /* UIView+AutoLayout.swift in Sources */,
 				227FB6501BE39B2000FE8C40 /* YHDiscoverController.swift in Sources */,
 				222EE7A41BDE368A00B74B33 /* AppDelegate.swift in Sources */,
 				227FB64E1BE39B0500FE8C40 /* YHMessageController.swift in Sources */,

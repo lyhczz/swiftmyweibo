@@ -9,9 +9,31 @@
 import UIKit
 import AFNetworking
 
+// MARK: - 网络错误枚举
+enum YHNetWorkError: Int {
+    case emptyToken = -1
+    case emptyUid = -2
+    
+    var description: String {
+        
+        // 根据枚举的类型返回对应的错误
+        get {
+            switch self {
+            case YHNetWorkError.emptyToken:
+                return "access token 为空"
+            case YHNetWorkError.emptyUid:
+                return "uid 为空"
+            }
+        }
+    }
+    func error() -> NSError {
+        return NSError(domain: "cn.czz.error.network", code: rawValue, userInfo: ["errorDescription" : description])
+    }
+}
+
+
 class Networktools: NSObject {
 
-    
     /// AFN 
     private var afManager: AFHTTPSessionManager
     // 实现单例
@@ -70,32 +92,44 @@ class Networktools: NSObject {
     func loadUserInfo(finshed: NetworkFinishedCallback) {
         // 判断access.token是否存在
         if YHUserAccount.loadAccount()?.access_token == nil {
-            print("没有access_token")
+            // 将错误告诉调用者
+            let error = YHNetWorkError.emptyToken.error()
+            finshed(result: nil, error: error)
             return
         }
-        
         // 判断uid是否存在
         if YHUserAccount.loadAccount()?.uid == nil {
-            print("没有UID")
+            // 将错误告诉调用者
+            let error = YHNetWorkError.emptyUid.error()
+            finshed(result: nil, error: error)
             return
         }
-        
         // url
         let urlString = "2/users/show.json"
         // 参数
         let parameters = ["access_token": YHUserAccount.loadAccount()!.access_token!,"uid": YHUserAccount.loadAccount()!.uid!]
         // 用GET发送请求
         requestGET(urlString, parameters: parameters, finshed: finshed)
-//        afManager.GET(urlString, parameters: parameters, success: { (_, result) -> Void in
-//            finshed(result: result as? [String : AnyObject], error: nil)
-//            }) { (_, error) -> Void in
-//                finshed(result: nil, error: error)
-//        }
     }
     
     
-    // 类型别名
-    typealias NetworkFinishedCallback = (result: [String: AnyObject]?, error: NSError?) -> ()
+    // MARK: - 加载微博数据
+    func loadStatus(finshed:NetworkFinishedCallback) {
+        // 判断access.token是否存在
+        if YHUserAccount.loadAccount()?.access_token == nil {
+            // 将错误告诉调用者
+            let error = YHNetWorkError.emptyToken.error()
+            finshed(result: nil, error: error)
+            return
+        }
+        // url地址
+        let urlString = "2/statuses/home_timeline.json"
+        // 参数
+        let parameters = ["access_token": YHUserAccount.loadAccount()!.access_token!]
+        // 发送请求
+        requestGET(urlString, parameters: parameters, finshed: finshed)
+    }
+    
     // MARK: - 封装AFN GET方法
     func requestGET(URLString: String, parameters: AnyObject?,finshed:NetworkFinishedCallback) {
         afManager.GET(URLString, parameters: parameters, success: { (_, result) -> Void in
@@ -104,6 +138,8 @@ class Networktools: NSObject {
                finshed(result: nil, error: error)
         }
     }
+    // 类型别名
+    typealias NetworkFinishedCallback = (result: [String: AnyObject]?, error: NSError?) ->()
     
 }
 
