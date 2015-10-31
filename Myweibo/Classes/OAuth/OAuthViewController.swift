@@ -120,6 +120,9 @@ extension OAuthViewController:UIWebViewDelegate {
                 // 成功
                 self.close()
                 print("account\(account)")
+                
+                // 切换控制器
+                (UIApplication.sharedApplication().delegate as! AppDelegate).switchRootController(false)
             })
         }
     }

@@ -141,6 +141,10 @@ class YHNewFeatureCell: UICollectionViewCell {
         contentView.addConstraint(NSLayoutConstraint(item: startButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: -160))
     
     }
+    // 按钮点击事件
+    func startButtonClick() {
+        (UIApplication.sharedApplication().delegate as! AppDelegate) .switchRootController(true)
+    }
     
     // MARK: - 懒加载控件
     /// 背景
@@ -155,6 +159,9 @@ class YHNewFeatureCell: UICollectionViewCell {
         button.setBackgroundImage(UIImage(named: "new_feature_finish_button_highlighted"), forState: UIControlState.Highlighted)
         // 设置文字
         button.setTitle("开始体验", forState: UIControlState.Normal)
+        
+        // 点击事件
+        button.addTarget(self, action: "startButtonClick", forControlEvents: UIControlEvents.TouchUpInside)
         
         return button
     }()

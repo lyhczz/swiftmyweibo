@@ -28,6 +28,10 @@ class YHUserAccount: NSObject, NSCoding {
     /// 用户头像地址180*180
     var avatar_large: String?
     
+    /// 返回是否有账号
+    class func userLogin() -> Bool {
+        return YHUserAccount.loadAccount() != nil
+    }
     
     override var description: String {
         let properties = ["access_token", "expires_in", "expiresDate", "uid","name","avatar_large"]

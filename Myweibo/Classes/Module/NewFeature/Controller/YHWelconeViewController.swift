@@ -44,7 +44,8 @@ class YHWelconeViewController: UIViewController {
                 UIView.animateWithDuration(1.0, animations: { () -> Void in
                     self.nameLabel.alpha = 1.0
                     }, completion: { (_) -> Void in
-                        
+                        // 切换到主控制器
+                        (UIApplication.sharedApplication().delegate as! AppDelegate).switchRootController(true)
                 })
         })
     }

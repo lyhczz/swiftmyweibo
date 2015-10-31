@@ -10,7 +10,7 @@ import UIKit
 
 class YHBaseController: UITableViewController {
 
-    var userLogin = false
+    var userLogin = YHUserAccount.userLogin()
     
     override func viewDidLoad() {
         super.viewDidLoad()
