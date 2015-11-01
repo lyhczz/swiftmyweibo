@@ -26,6 +26,9 @@ class YHStatus: NSObject {
     /// 图片地址数组
     var pic_urls: [[String: AnyObject]]?
     
+    /// 用户模型
+    var user: YHUser?
+    
     /// 字典转模型
     init(dict: [String: AnyObject]) {
         super.init()
@@ -36,9 +39,21 @@ class YHStatus: NSObject {
     // 处理字典的key在模型中没有对应的属性
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
     
+    /// KVC赋值时，对user属性特殊处理
+    override func setValue(value: AnyObject?, forKey key: String) {
+        if key == "user" {
+            if let dict = value as? [String: AnyObject] {
+                // 字典转模型
+                user = YHUser(dict: dict)
+            }
+            return
+        }
+        super.setValue(value, forKey: key)
+    }
+    
     // 打印对象
     override var description: String {
-        let porperties = ["id", "created_at", "source", "text", "pic_urls"]
+        let porperties = ["id", "created_at", "source", "text", "pic_urls","user"]
         
         return "\(dictionaryWithValuesForKeys(porperties))"
     }
@@ -73,6 +88,7 @@ class YHStatus: NSObject {
             }
         }
     }
+    
     
     
 }
