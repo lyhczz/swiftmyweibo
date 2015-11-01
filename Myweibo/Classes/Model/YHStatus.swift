@@ -11,6 +11,7 @@ import UIKit
 class YHStatus: NSObject {
 
     // MARK: - 属性
+    
     /// 微博创建时间
     var created_at: String?
     
@@ -28,6 +29,8 @@ class YHStatus: NSObject {
     
     /// 用户模型
     var user: YHUser?
+    
+    
     
     /// 字典转模型
     init(dict: [String: AnyObject]) {

@@ -10,6 +10,15 @@ import UIKit
 
 class YHStatusCell: UITableViewCell {
     
+    // MARK: - 属性
+    /// 微博模型
+    var status: YHStatus? {
+        didSet {
+            // 将模型属性赋值给topView
+            topView.status = status
+        }
+    }
+    
     // MARK: - 构造函数 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

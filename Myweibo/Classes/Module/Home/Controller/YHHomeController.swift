@@ -47,6 +47,8 @@ class YHHomeController: YHBaseController {
         tableView.registerClass(YHStatusCell.self, forCellReuseIdentifier: "cell")
         // 设置行高
         tableView.rowHeight = 100
+        // 取出分割线
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
     // MARK: - tableView数据源和代理方法
@@ -58,6 +60,7 @@ class YHHomeController: YHBaseController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! YHStatusCell
         
 //        cell.textLabel?.text = statuses?[indexPath.row].text
+        cell.status = statuses?[indexPath.row]
         
         return cell
     }

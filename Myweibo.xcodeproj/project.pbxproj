@@ -20,6 +20,7 @@
 		22594A3A1BE1DD7D00E82EB5 /* YHUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */; settings = {ASSET_TAGS = (); }; };
 		226CEBA81BE5F7CA00039883 /* YHStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CEBA71BE5F7CA00039883 /* YHStatusCell.swift */; settings = {ASSET_TAGS = (); }; };
 		226CEBAA1BE5F81100039883 /* YHStatusTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CEBA91BE5F81100039883 /* YHStatusTopView.swift */; settings = {ASSET_TAGS = (); }; };
+		226CEBAC1BE6105E00039883 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CEBAB1BE6105E00039883 /* UILabel+Extension.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6421BE399FE00FE8C40 /* YHHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6411BE399FE00FE8C40 /* YHHomeController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6441BE39A0C00FE8C40 /* YHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6431BE39A0C00FE8C40 /* YHTabBarController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6461BE39A7900FE8C40 /* YHBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6451BE39A7900FE8C40 /* YHBaseController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -49,6 +50,7 @@
 		22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUserAccount.swift; sourceTree = "<group>"; };
 		226CEBA71BE5F7CA00039883 /* YHStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusCell.swift; sourceTree = "<group>"; };
 		226CEBA91BE5F81100039883 /* YHStatusTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusTopView.swift; sourceTree = "<group>"; };
+		226CEBAB1BE6105E00039883 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		227FB6411BE399FE00FE8C40 /* YHHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHHomeController.swift; path = Myweibo/Classes/Module/Home/Controller/YHHomeController.swift; sourceTree = SOURCE_ROOT; };
 		227FB6431BE39A0C00FE8C40 /* YHTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHTabBarController.swift; path = Myweibo/Classes/Module/Main/Controller/YHTabBarController.swift; sourceTree = SOURCE_ROOT; };
 		227FB6451BE39A7900FE8C40 /* YHBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHBaseController.swift; path = Myweibo/Classes/Module/Main/Controller/YHBaseController.swift; sourceTree = SOURCE_ROOT; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				224C34421BE4849800A42E1B /* UIBarButtonItem+Extension.swift */,
+				226CEBAB1BE6105E00039883 /* UILabel+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226CEBAC1BE6105E00039883 /* UILabel+Extension.swift in Sources */,
 				227FB6441BE39A0C00FE8C40 /* YHTabBarController.swift in Sources */,
 				224C34471BE4DB0D00A42E1B /* UIView+AutoLayout.swift in Sources */,
 				227FB6501BE39B2000FE8C40 /* YHDiscoverController.swift in Sources */,
