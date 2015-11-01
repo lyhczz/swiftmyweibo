@@ -44,7 +44,9 @@ class YHHomeController: YHBaseController {
         // 加载微博数据
         loadStatus()
         // 注册可重用的cell
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.registerClass(YHStatusCell.self, forCellReuseIdentifier: "cell")
+        // 设置行高
+        tableView.rowHeight = 100
     }
     
     // MARK: - tableView数据源和代理方法
@@ -53,9 +55,9 @@ class YHHomeController: YHBaseController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! YHStatusCell
         
-        cell.textLabel?.text = statuses?[indexPath.row].text
+//        cell.textLabel?.text = statuses?[indexPath.row].text
         
         return cell
     }
