@@ -52,7 +52,10 @@ class YHStatus: NSObject {
     /// 行高属性
     var rowHeight: CGFloat?
     
+    /// 被转发的微博
+    var retweeted_status: YHStatus?
     
+    // MARK: - 构造方法
     /// 字典转模型
     init(dict: [String: AnyObject]) {
         super.init()
@@ -63,12 +66,21 @@ class YHStatus: NSObject {
     // 处理字典的key在模型中没有对应的属性
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
     
-    /// KVC赋值时，对user属性特殊处理
+    /// KVC赋值时
     override func setValue(value: AnyObject?, forKey key: String) {
+        // 对user属性特殊处理
         if key == "user" {
             if let dict = value as? [String: AnyObject] {
                 // 字典转模型
                 user = YHUser(dict: dict)
+            }
+            return
+        }
+        
+        // 对retweeted_status属性特殊处理
+        if key == "retweeted_status" {
+            if let dict = value as? [String: AnyObject] {
+                retweeted_status = YHStatus(dict: dict)
             }
             return
         }
@@ -111,6 +123,12 @@ class YHStatus: NSObject {
                 finshed(list: nil, error: nil)
             }
         }
+    }
+    
+    // MARK: - 外部调用方法
+    /// 返回cell的重用id
+    func cellID() -> String {
+        return retweeted_status == nil ? YHStatusCellReuseIdentifier.NormalCell.rawValue : YHStatusCellReuseIdentifier.ForwarCell.rawValue
     }
     
 }

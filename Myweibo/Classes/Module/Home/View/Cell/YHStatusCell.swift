@@ -13,10 +13,11 @@ class YHStatusCell: UITableViewCell {
     // MARK: - 属性
     
     // 配图宽度约束
-    private var pictureViewWidthCon: NSLayoutConstraint?
+    var pictureViewWidthCon: NSLayoutConstraint?
     // 配图高度约束
-    private var pictureViewheightCon: NSLayoutConstraint?
-
+    var pictureViewheightCon: NSLayoutConstraint?
+    // 间距
+    let statusCellMargin: CGFloat = 8
     
     /// 微博模型
     var status: YHStatus? {
@@ -68,7 +69,7 @@ class YHStatusCell: UITableViewCell {
 
     
     // MARK: - 准备UI
-    private func prepareUI() {
+    func prepareUI() {
         // 添加子控件
         contentView.addSubview(topView)
         contentView.addSubview(contentLabel)
@@ -80,21 +81,23 @@ class YHStatusCell: UITableViewCell {
         topView.ff_AlignInner(type: ff_AlignType.TopLeft, referView: contentView, size: CGSize(width: UIScreen.width(), height: 54))
         
         // contentLabel
-        contentLabel.ff_AlignVertical(type: ff_AlignType.BottomLeft, referView: topView, size: nil, offset: CGPoint(x: 8, y: 8))
-        contentView.addConstraint(NSLayoutConstraint(item: contentLabel, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: UIScreen.width() - 2 * 8))
+        contentLabel.ff_AlignVertical(type: ff_AlignType.BottomLeft, referView: topView, size: nil, offset: CGPoint(x: statusCellMargin, y: statusCellMargin))
+        contentView.addConstraint(NSLayoutConstraint(item: contentLabel, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: UIScreen.width() - 2.0 * statusCellMargin))
         
-        //pictureView
-        let con = pictureView.ff_AlignVertical(type: ff_AlignType.BottomLeft, referView: contentLabel, size: CGSize(width: 290, height: 290), offset: CGPoint(x: 0, y: 8))
-        
-        // 获取微博配图的宽高约束
-        pictureViewWidthCon = pictureView.ff_Constraint(con, attribute: NSLayoutAttribute.Width)
-        pictureViewheightCon = pictureView.ff_Constraint(con, attribute: NSLayoutAttribute.Height)
+//        //pictureView
+//        let con = pictureView.ff_AlignVertical(type: ff_AlignType.BottomLeft, referView: contentLabel, size: CGSize(width: 290, height: 290), offset: CGPoint(x: 0, y: statusCellMargin))
+//        
+//        // 获取微博配图的宽高约束
+//        pictureViewWidthCon = pictureView.ff_Constraint(con, attribute: NSLayoutAttribute.Width)
+//        pictureViewheightCon = pictureView.ff_Constraint(con, attribute: NSLayoutAttribute.Height)
         
         // 底部视图
         bottomView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addConstraint(NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: pictureView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 8))
+        contentView.addConstraint(NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: pictureView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: statusCellMargin))
         contentView.addConstraint(NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 0))
         contentView.addConstraint(NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 44))
+        contentView.addConstraint(NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.Left, multiplier: 1, constant: 0))
+
         
         // contentView的底部和bottomView的底部重合
 //        contentView.addConstraint(NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
@@ -106,7 +109,7 @@ class YHStatusCell: UITableViewCell {
     private lazy var topView: YHStatusTopView = YHStatusTopView()
     
     /// 微博内容标签
-    private lazy var contentLabel: UILabel = {
+    lazy var contentLabel: UILabel = {
         let label = UILabel()
         // 自动换行
         label.numberOfLines = 0
@@ -116,10 +119,10 @@ class YHStatusCell: UITableViewCell {
     }()
     
     /// 微博配图视图
-    private lazy var pictureView: YHStatusPictureView = YHStatusPictureView()
+    lazy var pictureView: YHStatusPictureView = YHStatusPictureView()
     
-    // 顶部视图
-    private lazy var bottomView: YHStatusBottomView = YHStatusBottomView()
+    // 低部视图
+    lazy var bottomView: YHStatusBottomView = YHStatusBottomView()
 }
 
 

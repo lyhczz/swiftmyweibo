@@ -20,6 +20,8 @@
 		22594A3A1BE1DD7D00E82EB5 /* YHUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */; settings = {ASSET_TAGS = (); }; };
 		226ACD721BE6EDF6000B0FF3 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACD711BE6EDF6000B0FF3 /* UIScreen+Extension.swift */; settings = {ASSET_TAGS = (); }; };
 		226ACD741BE6F710000B0FF3 /* YHStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACD731BE6F710000B0FF3 /* YHStatusPictureView.swift */; settings = {ASSET_TAGS = (); }; };
+		226ACD761BE73E2A000B0FF3 /* YHStatusForwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACD751BE73E2A000B0FF3 /* YHStatusForwardCell.swift */; settings = {ASSET_TAGS = (); }; };
+		226ACD781BE74A6D000B0FF3 /* YHStatusNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACD771BE74A6D000B0FF3 /* YHStatusNormalCell.swift */; settings = {ASSET_TAGS = (); }; };
 		226CEBA81BE5F7CA00039883 /* YHStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CEBA71BE5F7CA00039883 /* YHStatusCell.swift */; settings = {ASSET_TAGS = (); }; };
 		226CEBAA1BE5F81100039883 /* YHStatusTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CEBA91BE5F81100039883 /* YHStatusTopView.swift */; settings = {ASSET_TAGS = (); }; };
 		226CEBAC1BE6105E00039883 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CEBAB1BE6105E00039883 /* UILabel+Extension.swift */; settings = {ASSET_TAGS = (); }; };
@@ -54,6 +56,8 @@
 		22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUserAccount.swift; sourceTree = "<group>"; };
 		226ACD711BE6EDF6000B0FF3 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		226ACD731BE6F710000B0FF3 /* YHStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusPictureView.swift; sourceTree = "<group>"; };
+		226ACD751BE73E2A000B0FF3 /* YHStatusForwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusForwardCell.swift; sourceTree = "<group>"; };
+		226ACD771BE74A6D000B0FF3 /* YHStatusNormalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusNormalCell.swift; sourceTree = "<group>"; };
 		226CEBA71BE5F7CA00039883 /* YHStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusCell.swift; sourceTree = "<group>"; };
 		226CEBA91BE5F81100039883 /* YHStatusTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusTopView.swift; sourceTree = "<group>"; };
 		226CEBAB1BE6105E00039883 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -370,6 +374,8 @@
 			isa = PBXGroup;
 			children = (
 				226CEBA71BE5F7CA00039883 /* YHStatusCell.swift */,
+				226ACD771BE74A6D000B0FF3 /* YHStatusNormalCell.swift */,
+				226ACD751BE73E2A000B0FF3 /* YHStatusForwardCell.swift */,
 				226CEBA91BE5F81100039883 /* YHStatusTopView.swift */,
 				226CEBAF1BE62D5000039883 /* YHStatusBottomView.swift */,
 				226ACD731BE6F710000B0FF3 /* YHStatusPictureView.swift */,
@@ -542,6 +548,8 @@
 				226CEBAA1BE5F81100039883 /* YHStatusTopView.swift in Sources */,
 				227FB64C1BE39AD800FE8C40 /* YHProfileController.swift in Sources */,
 				226CEBB01BE62D5000039883 /* YHStatusBottomView.swift in Sources */,
+				226ACD781BE74A6D000B0FF3 /* YHStatusNormalCell.swift in Sources */,
+				226ACD761BE73E2A000B0FF3 /* YHStatusForwardCell.swift in Sources */,
 				227FB6421BE399FE00FE8C40 /* YHHomeController.swift in Sources */,
 				223952921BE0DBBE00AF2718 /* Networktools.swift in Sources */,
 				224C34451BE4CE9400A42E1B /* YHHomeTitleView.swift in Sources */,

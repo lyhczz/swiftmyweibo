@@ -9,6 +9,12 @@
 import UIKit
 import SVProgressHUD
 
+// 枚举,管理cell的重用标示
+enum YHStatusCellReuseIdentifier: String {
+    case NormalCell = "NormalCell"
+    case ForwarCell = "ForwarCell"
+}
+
 class YHHomeController: YHBaseController {
 
     // MARK: - 属性
@@ -20,7 +26,7 @@ class YHHomeController: YHBaseController {
         }
     }
     // cell的重用标识
-    private let homeCellReuseIdentifier = "homeCellReuseIdentifier"
+//    private let homeCellReuseIdentifier = "homeCellReuseIdentifier"
     
     
     /// 加载微博数据
@@ -39,23 +45,32 @@ class YHHomeController: YHBaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // 设置NavigationBar
         setNavigationBar()
         // 设置标题
         navigationItem.titleView = titleButton
         // 加载微博数据
         loadStatus()
+        // 设置tableview相关属性
+        prepareTableView()
+    }
+    
+    /// 设置tableview相关属性
+    func prepareTableView() {
         // 注册可重用的cell
-        tableView.registerClass(YHStatusCell.self, forCellReuseIdentifier: homeCellReuseIdentifier)
-        // 设置行高
-        tableView.rowHeight = 100
-        // 取出分割线
+        tableView.registerClass(YHStatusNormalCell.self, forCellReuseIdentifier: YHStatusCellReuseIdentifier.NormalCell.rawValue)
+        tableView.registerClass(YHStatusForwardCell.self, forCellReuseIdentifier: YHStatusCellReuseIdentifier.ForwarCell.rawValue)
+        
+        // 取消分割线
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-//         //设置预估行高
-//        tableView.estimatedRowHeight = 300
-//        // 自动计算行高
-//        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
+        // 设置行高
+        // tableView.rowHeight = 100
+        //         //设置预估行高
+        //        tableView.estimatedRowHeight = 300
+        //        // 自动计算行高
+        //        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     // MARK: - tableView数据源和代理方法
@@ -64,10 +79,13 @@ class YHHomeController: YHBaseController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(homeCellReuseIdentifier, forIndexPath: indexPath) as! YHStatusCell
         
-//        cell.textLabel?.text = statuses?[indexPath.row].text
-        cell.status = statuses?[indexPath.row]
+        // 获得模型
+        let status = statuses?[indexPath.row]
+        // 创建cell
+        let cell = tableView.dequeueReusableCellWithIdentifier(status!.cellID(), forIndexPath: indexPath) as! YHStatusCell
+        
+        cell.status = status
         
         return cell
     }
@@ -84,7 +102,7 @@ class YHHomeController: YHBaseController {
             return rowHeight
         }
         // 获取cell
-        let cell = tableView.dequeueReusableCellWithIdentifier(homeCellReuseIdentifier) as! YHStatusCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(status!.cellID()) as! YHStatusCell
         // 使用cell计算行高
         let rowHeight = cell.rowHeight(status!)
         print("计算行高: \(indexPath)")
@@ -95,7 +113,7 @@ class YHHomeController: YHBaseController {
     }
     // 预估行高
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 200
+        return 300
     }
     
     
