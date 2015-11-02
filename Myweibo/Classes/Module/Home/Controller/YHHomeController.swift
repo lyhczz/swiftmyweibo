@@ -16,6 +16,7 @@ class YHHomeController: YHBaseController {
     var statuses: [YHStatus]? {
         didSet {
             tableView.reloadData()
+            
         }
     }
     
@@ -49,6 +50,10 @@ class YHHomeController: YHBaseController {
         tableView.rowHeight = 100
         // 取出分割线
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        // 设置预估行高
+        tableView.estimatedRowHeight = 300
+        // 自动计算行高
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     // MARK: - tableView数据源和代理方法

@@ -16,8 +16,7 @@ class YHStatusTopView: UIView {
         didSet {
             // 设置view的内容
             // 设置头像
-            if let urlString = status?.user?.profile_image_url {
-                let url = NSURL(string: urlString)
+            if let url = status?.user?.profileImageUrl {
                 iconView.sd_setImageWithURL(url)
             }
             

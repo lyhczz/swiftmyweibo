@@ -21,6 +21,8 @@
 		226CEBA81BE5F7CA00039883 /* YHStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CEBA71BE5F7CA00039883 /* YHStatusCell.swift */; settings = {ASSET_TAGS = (); }; };
 		226CEBAA1BE5F81100039883 /* YHStatusTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CEBA91BE5F81100039883 /* YHStatusTopView.swift */; settings = {ASSET_TAGS = (); }; };
 		226CEBAC1BE6105E00039883 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CEBAB1BE6105E00039883 /* UILabel+Extension.swift */; settings = {ASSET_TAGS = (); }; };
+		226CEBAE1BE62A8C00039883 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CEBAD1BE62A8C00039883 /* UIButton+Extension.swift */; settings = {ASSET_TAGS = (); }; };
+		226CEBB01BE62D5000039883 /* YHStatusBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CEBAF1BE62D5000039883 /* YHStatusBottomView.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6421BE399FE00FE8C40 /* YHHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6411BE399FE00FE8C40 /* YHHomeController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6441BE39A0C00FE8C40 /* YHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6431BE39A0C00FE8C40 /* YHTabBarController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6461BE39A7900FE8C40 /* YHBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6451BE39A7900FE8C40 /* YHBaseController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -51,6 +53,8 @@
 		226CEBA71BE5F7CA00039883 /* YHStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusCell.swift; sourceTree = "<group>"; };
 		226CEBA91BE5F81100039883 /* YHStatusTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusTopView.swift; sourceTree = "<group>"; };
 		226CEBAB1BE6105E00039883 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		226CEBAD1BE62A8C00039883 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		226CEBAF1BE62D5000039883 /* YHStatusBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusBottomView.swift; sourceTree = "<group>"; };
 		227FB6411BE399FE00FE8C40 /* YHHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHHomeController.swift; path = Myweibo/Classes/Module/Home/Controller/YHHomeController.swift; sourceTree = SOURCE_ROOT; };
 		227FB6431BE39A0C00FE8C40 /* YHTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHTabBarController.swift; path = Myweibo/Classes/Module/Main/Controller/YHTabBarController.swift; sourceTree = SOURCE_ROOT; };
 		227FB6451BE39A7900FE8C40 /* YHBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHBaseController.swift; path = Myweibo/Classes/Module/Main/Controller/YHBaseController.swift; sourceTree = SOURCE_ROOT; };
@@ -126,6 +130,7 @@
 			children = (
 				224C34421BE4849800A42E1B /* UIBarButtonItem+Extension.swift */,
 				226CEBAB1BE6105E00039883 /* UILabel+Extension.swift */,
+				226CEBAD1BE62A8C00039883 /* UIButton+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 			children = (
 				226CEBA71BE5F7CA00039883 /* YHStatusCell.swift */,
 				226CEBA91BE5F81100039883 /* YHStatusTopView.swift */,
+				226CEBAF1BE62D5000039883 /* YHStatusBottomView.swift */,
 			);
 			name = Cell;
 			path = Myweibo/Classes/Module/Home/View/Cell;
@@ -529,6 +535,7 @@
 				227FB64E1BE39B0500FE8C40 /* YHMessageController.swift in Sources */,
 				226CEBAA1BE5F81100039883 /* YHStatusTopView.swift in Sources */,
 				227FB64C1BE39AD800FE8C40 /* YHProfileController.swift in Sources */,
+				226CEBB01BE62D5000039883 /* YHStatusBottomView.swift in Sources */,
 				227FB6421BE399FE00FE8C40 /* YHHomeController.swift in Sources */,
 				223952921BE0DBBE00AF2718 /* Networktools.swift in Sources */,
 				224C34451BE4CE9400A42E1B /* YHHomeTitleView.swift in Sources */,
@@ -542,6 +549,7 @@
 				22CEBDE31BE3AD4E009D7D91 /* YHNewFeatureViewController.swift in Sources */,
 				223952951BE0E72F00AF2718 /* OAuthViewController.swift in Sources */,
 				226CEBA81BE5F7CA00039883 /* YHStatusCell.swift in Sources */,
+				226CEBAE1BE62A8C00039883 /* UIButton+Extension.swift in Sources */,
 				224C344B1BE510E700A42E1B /* YHUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

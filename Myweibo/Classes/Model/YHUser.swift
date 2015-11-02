@@ -21,6 +21,13 @@ class YHUser: NSObject {
     
     /// 用户头像地址（中图），50×50像素
     var profile_image_url: String?
+    /// 返回用户头像的url
+    var profileImageUrl: NSURL? {
+        if let urlString = profile_image_url {
+             return NSURL(string: urlString)
+        }
+        return nil
+    }
     
     /// 是否是微博认证用户，即加V用户，true：是，false：否
     var verified: Bool = false
