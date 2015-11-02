@@ -33,21 +33,28 @@ class YHStatus: NSObject {
                 return
             }
             
-            
             // 有值,遍历将pic_urls 里的string转成NSURL存放在pictureURLs数组里面
-            pictureURLs = [NSURL]()
+            storePictureURLs = [NSURL]()
             for dict in pic_urls! {
                 let value = dict["thumbnail_pic"] as! String
-                pictureURLs?.append(NSURL(string: value)!)
+                storePictureURLs?.append(NSURL(string: value)!)
             }
         }
     }
+    /// 存储型属性,存储的是pic_urls里面对应的URL
+    var pictureURLs: [NSURL]? {
+        // 原创微博返回:storePictureURLs
+        // 转发微博返回:retweeted_status.storePictureURLs
+        return retweeted_status == nil ? storePictureURLs : retweeted_status!.storePictureURLs
+    }
+    
+    /// 存储型属性,存储的是原创微博图片的URL
+    var storePictureURLs: [NSURL]?
     
     /// 用户模型
     var user: YHUser?
     
-    /// 存储型属性,存储的是pic_urls里面对应的URL
-    var pictureURLs: [NSURL]?
+    
     
     /// 行高属性
     var rowHeight: CGFloat?

@@ -98,14 +98,14 @@ class YHHomeController: YHBaseController {
         // 判断模型是否有缓存的行高
         if let rowHeight = status?.rowHeight {
             // 如果有行高,直接返回
-            print("使用缓存行高")
+//            print("使用缓存行高")
             return rowHeight
         }
         // 获取cell
         let cell = tableView.dequeueReusableCellWithIdentifier(status!.cellID()) as! YHStatusCell
         // 使用cell计算行高
         let rowHeight = cell.rowHeight(status!)
-        print("计算行高: \(indexPath)")
+//        print("计算行高: \(indexPath)")
         // 缓存行高
         status!.rowHeight = rowHeight
         

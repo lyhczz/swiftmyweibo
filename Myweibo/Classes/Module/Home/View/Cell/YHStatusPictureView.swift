@@ -56,7 +56,7 @@ class YHStatusPictureView: UICollectionView {
         let column = 3
         
         // 获得配图的数量
-        let count = status?.pic_urls?.count ?? 0
+        let count = status?.pictureURLs?.count ?? 0
         
         // 根据配图数量计算尺寸
         // 没有图片
@@ -101,7 +101,7 @@ class YHStatusPictureView: UICollectionView {
 extension YHStatusPictureView: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return status?.pic_urls?.count ?? 0
+        return status?.pictureURLs?.count ?? 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
