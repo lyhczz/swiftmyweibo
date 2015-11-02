@@ -57,10 +57,11 @@ class YHStatusTopView: UIView {
         addSubview(sourceLabel)
         addSubview(verifiedView)
         addSubview(memberView)
+        addSubview(topSeparatorView)
         
         // 2.添加约束
         // 用户头像
-        iconView.ff_AlignInner(type: ff_AlignType.TopLeft, referView: self, size: CGSize(width: 35, height: 35), offset: CGPoint(x: 8, y: 8))
+        iconView.ff_AlignVertical(type: ff_AlignType.BottomLeft, referView: topSeparatorView, size: CGSize(width: 35, height: 35), offset: CGPoint(x: 8, y: 8))
         // 用户名称
         nameLabel.ff_AlignHorizontal(type: ff_AlignType.TopRight, referView: iconView, size: nil, offset: CGPoint(x: 10, y: 0))
         // 时间标签
@@ -71,6 +72,8 @@ class YHStatusTopView: UIView {
         memberView.ff_AlignHorizontal(type: ff_AlignType.CenterRight, referView: nameLabel, size: CGSize(width: 14, height: 14), offset: CGPoint(x: 10, y: 0))
         // 认证图片
         verifiedView.ff_AlignInner(type: ff_AlignType.BottomRight, referView: iconView, size: CGSize(width: 17, height: 17), offset: CGPoint(x: 8.5, y: 8.5))
+        // 顶部分割视图
+        topSeparatorView.ff_AlignInner(type: ff_AlignType.TopLeft, referView: self, size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 10))
     }
     
     // MARK: - 懒加载控件
@@ -86,5 +89,11 @@ class YHStatusTopView: UIView {
     private lazy var verifiedView = UIImageView()
     // 会员等级图标
     private lazy var memberView = UIImageView()
+    /// 顶部分割视图
+    private lazy var topSeparatorView: UIView  = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.9, alpha: 0.9)
+        return view
+    }()
     
 }
