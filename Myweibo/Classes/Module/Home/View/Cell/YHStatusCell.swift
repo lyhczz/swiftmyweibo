@@ -31,7 +31,7 @@ class YHStatusCell: UITableViewCell {
             
             // 计算微博视图的size
             let size = pictureView.calcViewSize()
-            print("配图size:\(size)")
+//            print("配图size:\(size)")
             
             // 布局宽高
             pictureViewWidthCon?.constant = size.width
@@ -51,6 +51,20 @@ class YHStatusCell: UITableViewCell {
         prepareUI()
     }
     
+    // MARK: - 计算行高
+    /**
+    根据微博内容返回cell的行高
+    - parameter status: 微博模型
+    - returns: cell的行高
+    */
+    func rowHeight(status: YHStatus) -> CGFloat {
+        // 重新设置cell的status
+        self.status = status
+        // 更新布局
+        layoutIfNeeded()
+        
+        return CGRectGetMaxY(bottomView.frame)
+    }
 
     
     // MARK: - 准备UI
@@ -83,7 +97,7 @@ class YHStatusCell: UITableViewCell {
         contentView.addConstraint(NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 44))
         
         // contentView的底部和bottomView的底部重合
-        contentView.addConstraint(NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
+//        contentView.addConstraint(NSLayoutConstraint(item: bottomView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
     }
     
     // MARK: - 懒加载控件

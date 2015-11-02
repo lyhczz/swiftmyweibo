@@ -49,6 +49,9 @@ class YHStatus: NSObject {
     /// 存储型属性,存储的是pic_urls里面对应的URL
     var pictureURLs: [NSURL]?
     
+    /// 行高属性
+    var rowHeight: CGFloat?
+    
     
     /// 字典转模型
     init(dict: [String: AnyObject]) {
@@ -109,8 +112,6 @@ class YHStatus: NSObject {
             }
         }
     }
-    
-    
     
 }
 
