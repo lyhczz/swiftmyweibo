@@ -25,11 +25,29 @@ class YHStatus: NSObject {
     var source: String?
     
     /// 图片地址数组
-    var pic_urls: [[String: AnyObject]]?
+    var pic_urls: [[String: AnyObject]]? {
+        didSet {
+            // 判断pic_urls是否有值,没有值直接返回
+            let count = pic_urls?.count ?? 0
+            if count == 0 {
+                return
+            }
+            
+            
+            // 有值,遍历将pic_urls 里的string转成NSURL存放在pictureURLs数组里面
+            pictureURLs = [NSURL]()
+            for dict in pic_urls! {
+                let value = dict["thumbnail_pic"] as! String
+                pictureURLs?.append(NSURL(string: value)!)
+            }
+        }
+    }
     
     /// 用户模型
     var user: YHUser?
     
+    /// 存储型属性,存储的是pic_urls里面对应的URL
+    var pictureURLs: [NSURL]?
     
     
     /// 字典转模型

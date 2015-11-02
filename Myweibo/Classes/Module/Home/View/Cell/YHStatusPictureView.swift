@@ -15,7 +15,14 @@ class YHStatusPictureView: UICollectionView {
     // collectionView的布局
     private var pictureLayout = UICollectionViewFlowLayout()
     /// 微博模型
-    var status: YHStatus? 
+    var status: YHStatus? {
+        didSet {
+            // 刷新数据
+            reloadData()
+        }
+    }
+    /// cellID
+    let pictrueViewCellReuseIdentifier = "pictrueViewCellReuseIdentifier"
     
     // MARK: - 构造函数
     required init?(coder aDecoder: NSCoder) {
@@ -24,6 +31,12 @@ class YHStatusPictureView: UICollectionView {
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: pictureLayout)
+        // 注册cell
+        registerClass(YHStatusPictureViewCell.self, forCellWithReuseIdentifier: pictrueViewCellReuseIdentifier)
+        // 设置数据源
+        dataSource = self
+        // 设置颜色
+        backgroundColor = UIColor(white: 0.96, alpha: 0.9)
      
     }
     
@@ -82,5 +95,60 @@ class YHStatusPictureView: UICollectionView {
     }
     
     
-    
 }
+
+// MARK: - 扩展,实现数据源
+extension YHStatusPictureView: UICollectionViewDataSource {
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return status?.pic_urls?.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(pictrueViewCellReuseIdentifier, forIndexPath: indexPath) as! YHStatusPictureViewCell
+        
+//        cell.backgroundColor = UIColor.redColor()
+        cell.imageUrl = status?.pictureURLs?[indexPath.item]
+        
+        return cell
+    }
+}
+
+
+// MARK: - 自定义cell
+class YHStatusPictureViewCell: UICollectionViewCell {
+    
+    // MARK: - 属性
+    var imageUrl: NSURL? {
+        didSet {
+            // 加载图片
+            iconView.sd_setImageWithURL(imageUrl)
+        }
+    }
+    
+    // MARK: - 构造函数
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        // 准备UI
+        prepareUI()
+    }
+    
+    
+    // MARK: - 准备UI
+    private func prepareUI() {
+        // 添加子控件
+        contentView.addSubview(iconView)
+        
+        // 添加约束
+        iconView.ff_Fill(iconView)
+    }
+    
+    // MARK: - 懒加载控件
+    private lazy var iconView = UIImageView()
+}
+
+
