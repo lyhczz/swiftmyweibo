@@ -64,13 +64,6 @@ class YHHomeController: YHBaseController {
         // 取消分割线
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
-        
-        // 设置行高
-        // tableView.rowHeight = 100
-        //         //设置预估行高
-        //        tableView.estimatedRowHeight = 300
-        //        // 自动计算行高
-        //        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     // MARK: - tableView数据源和代理方法

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class YHStatus: NSObject {
 
@@ -124,12 +125,67 @@ class YHStatus: NSObject {
                     list.append(YHStatus(dict: dict))
                 }
                 // 返回数据
-                finshed(list: list, error: nil)
+//                finshed(list: list, error: nil)
+                // 先缓存图片,在调用闭包
+                cacheWebImage(list, finshed: finshed)
+                
             } else {
                 // 没有加载到数据
                 finshed(list: nil, error: nil)
             }
         }
+    }
+    
+    class func cacheWebImage(lists: [YHStatus],finshed:(list: [YHStatus]?,error: NSError?) -> ()) {
+        
+        // 定义任务组
+        let group = dispatch_group_create()
+        // 记录下载图片的大小
+        var length = 0
+        
+        // 遍历模型数组
+        for status in lists {
+            // 获取模型里面的配图url
+            guard let urls = status.pictureURLs else {
+                // 如果没有图片,遍历下一个模型
+                continue
+            }
+            
+            // 缓存单张图片
+            if urls.count == 1 {
+                // 获得单张图片的url
+                let url = urls[0]
+                
+                // 进入任务组
+                dispatch_group_enter(group)
+                // 使用SDWebImage下载图片
+                SDWebImageManager.sharedManager().downloadImageWithURL(url, options: SDWebImageOptions(rawValue: 0), progress: nil, completed: { (image, error, _, _, _) -> Void in
+                    
+                    // 离开任务组
+                    dispatch_group_leave(group)
+                    
+                    // 判断是否出错
+                    if error != nil {
+                        print("下载图片出错")
+                        return
+                    }
+                    
+                    // 下载没有出错
+                    print("下载完成:\(url)")
+                    // 计算下载图片的大小
+                    if let data = UIImagePNGRepresentation(image) {
+                        length += data.length
+                    }
+                 })
+            }
+        }
+        // 全部图片下载完成后,通知调用者
+        dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
+            print("所有图片下载完成:\(length / 1024)k")
+            // 返回数据
+            finshed(list: lists, error: nil)
+        }
+        
     }
     
     // MARK: - 外部调用方法

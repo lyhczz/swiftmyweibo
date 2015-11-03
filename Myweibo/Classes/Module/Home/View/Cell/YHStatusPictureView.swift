@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class YHStatusPictureView: UICollectionView {
 
@@ -66,7 +67,23 @@ class YHStatusPictureView: UICollectionView {
         
         // 只有一张图片
         if count == 1 {
-            let size = CGSize(width: 150, height: 120)
+            
+            var size = CGSize(width: 150, height: 120)
+//            pictureLayout.itemSize = size
+//            return size
+            
+            // 获取图片url地址
+            let urlSring = status!.pictureURLs![0].absoluteString
+            
+            // 获取图片,根据图片返回size
+            if let image = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(urlSring) {
+                size = image.size
+            }
+            // 有些图片宽度很小
+            if size.width < 40 {
+                size.width = 40
+            }
+            
             pictureLayout.itemSize = size
             return size
         }
@@ -148,7 +165,16 @@ class YHStatusPictureViewCell: UICollectionViewCell {
     }
     
     // MARK: - 懒加载控件
-    private lazy var iconView = UIImageView()
+    private lazy var iconView: UIImageView = {
+        let imageView = UIImageView()
+        
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        
+        imageView.clipsToBounds = true
+        
+        return imageView
+    
+    }()
 }
 
 
