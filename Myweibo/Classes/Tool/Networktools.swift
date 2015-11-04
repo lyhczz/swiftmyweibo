@@ -34,6 +34,8 @@ enum YHNetWorkError: Int {
 
 class Networktools: NSObject {
 
+    
+    // MARK: - 属性
     /// AFN 
     private var afManager: AFHTTPSessionManager
     // 实现单例

@@ -29,6 +29,7 @@ class YHHomeController: YHBaseController {
 //    private let homeCellReuseIdentifier = "homeCellReuseIdentifier"
     
     
+    // MARK: - 控制器相关方法
     /// 加载微博数据
     @objc private func loadStatus() {
         print("开始加载微博数据")
@@ -62,6 +63,12 @@ class YHHomeController: YHBaseController {
             
             let count = list?.count ?? 0
             
+            // 显示下拉刷新加载了多少条微博
+            if since_id > 0 {
+                self.showPullUpTip(count)
+            }
+            
+            // 如果没有加载到微博,不要往下执行
             if count == 0 {
                 print("没有新的微博")
                 return
@@ -116,7 +123,30 @@ class YHHomeController: YHBaseController {
         
         // 设置上拉加载的菊花
         tableView.tableFooterView = pullUpView
+    }
+    
+    /**
+    显示加载多少条数据.只在下拉刷新数据的时候调用
+    - parameter count: 条数
+    */
+    private func showPullUpTip(count: Int) {
+        tipLabel.text = count == 0 ? "没有新的微博" : "加载了\(count)条微博"
         
+        let duration = 0.75
+        // 记录动画起始frame
+        let srcFrame = tipLabel.frame
+        // 开始动画
+        UIView.animateWithDuration(duration, animations: { () -> Void in
+            // 动画下来
+            self.tipLabel.frame.origin.y = self.navigationController!.navigationBar.frame.size.height
+            }) { (_) -> Void in
+                UIView.animateWithDuration(duration, delay: 0.3, options: UIViewAnimationOptions(rawValue: 0), animations: { () -> Void in
+                    
+                    self.tipLabel.frame = srcFrame
+                    }, completion: { (_) -> Void in
+                        
+                })
+        }
     }
     
     // MARK: - tableView数据源和代理方法
@@ -215,6 +245,23 @@ class YHHomeController: YHBaseController {
         indicator.color = UIColor.grayColor()
         
         return indicator
+    }()
+    
+    /// 下拉刷新提示label
+    private lazy var tipLabel: UILabel = {
+       
+        let tipLabelHeight: CGFloat = 30
+        
+        let tipLabel = UILabel(frame: CGRect(x: 0, y: -20 - tipLabelHeight, width: UIScreen.width(), height: tipLabelHeight))
+        tipLabel.backgroundColor = UIColor.orangeColor()
+        tipLabel.textColor = UIColor.whiteColor()
+        tipLabel.textAlignment = NSTextAlignment.Center
+        tipLabel.font = UIFont.systemFontOfSize(15)
+        tipLabel.alpha = 0.85
+        self.navigationController?.navigationBar.insertSubview(tipLabel, atIndex: 0)
+        
+        return tipLabel
+        
     }()
 
 }
