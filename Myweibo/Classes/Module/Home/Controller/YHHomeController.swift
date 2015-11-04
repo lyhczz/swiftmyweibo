@@ -33,24 +33,52 @@ class YHHomeController: YHBaseController {
     @objc private func loadStatus() {
         print("开始加载微博数据")
         
-        let since_id = statuses?.first?.id ?? 0
-        let max_id = 0
+        var since_id = statuses?.first?.id ?? 0
+        var max_id = 0
+        
+        // 菊花正在转,表示上拉加载数据
+        if pullUpView.isAnimating() {
+            // 清空 since_id
+            since_id = 0
+            
+            // max_id等于最后一条微博的id
+            max_id = statuses?.last?.id ?? 0
+            
+        }
         
         YHStatus.loadStatus(since_id, max_id: max_id) { (list, error) -> () in
+            
+            // 结束动画
+            self.refreshControl?.endRefreshing()
+            
+            // 停止上拉加载的菊花
+            self.pullUpView.stopAnimating()
+            
             // 判断是否加载成功
             if error != nil {
                 SVProgressHUD.showErrorWithStatus("加载微博数据出错", maskType: SVProgressHUDMaskType.Black)
                 return
             }
+            
+            let count = list?.count ?? 0
+            
+            if count == 0 {
+                print("没有新的微博")
+                return
+            }
+            
             if since_id > 0 {
                 // 如果是下拉刷新,将加载到的数据添加到现有数据的前面
+                print("下拉刷新,加载\(count)条数据")
                 self.statuses = list! + self.statuses!
+            } else if max_id > 0 {
+                print("上拉加载,加载\(count)条数据")
+                self.statuses = self.statuses! + list!
             } else {
                 // 如果是第一次加载,将数据赋值给模型数组
                 self.statuses = list
             }
             
-            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -83,8 +111,11 @@ class YHHomeController: YHBaseController {
         // 取消分割线
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
-        // 设置菊花
+        // 设置下拉刷新的菊花
         refreshControl = YHRefreshContro()
+        
+        // 设置上拉加载的菊花
+        tableView.tableFooterView = pullUpView
         
     }
     
@@ -99,8 +130,18 @@ class YHHomeController: YHBaseController {
         let status = statuses?[indexPath.row]
         // 创建cell
         let cell = tableView.dequeueReusableCellWithIdentifier(status!.cellID(), forIndexPath: indexPath) as! YHStatusCell
-        
+        // 设置微博模型
         cell.status = status
+        
+        // 当cell是最后一个时,加载更多数据
+        if indexPath.row == statuses!.count - 1 && !pullUpView.isAnimating() {
+            
+            print("上拉加载更多数据")
+            pullUpView.startAnimating()
+            // 加载数据
+            loadStatus()
+        }
+        
         
         return cell
     }
@@ -157,12 +198,23 @@ class YHHomeController: YHBaseController {
     }
     
     // MARK: - 懒加载控件
-    lazy var titleButton: YHHomeTitleView = {
+    /// 标题栏
+    private lazy var titleButton: YHHomeTitleView = {
         let name = YHUserAccount.loadAccount()?.name
         let button = YHHomeTitleView(title: name)
         // 添加点击事件
         button.addTarget(self, action: "titleButtonClick", forControlEvents: UIControlEvents.TouchUpInside)
         return button
+    }()
+    
+    /// 上拉加载控件
+    private lazy var pullUpView: UIActivityIndicatorView = {
+        // 创建
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        // 设置颜色
+        indicator.color = UIColor.grayColor()
+        
+        return indicator
     }()
 
 }

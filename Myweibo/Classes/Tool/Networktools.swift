@@ -134,7 +134,7 @@ class Networktools: NSObject {
             parameters["since_id"] = since_id
         } else if max_id > 0 {
              // 判断是否传入 max_id
-            parameters["max_id"] = max_id
+            parameters["max_id"] = max_id - 1
         }
         
         
