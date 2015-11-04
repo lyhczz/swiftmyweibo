@@ -62,6 +62,16 @@ class YHTabBarController: UITabBarController {
         addChildViewController(nav)
     }
     
+    /// 撰写按钮点击事件
+    @objc private func composeButtonClick() {
+        
+        // 判断是否登陆,如果没登陆就跳转到授权界面,登陆了就跳转到撰写界面
+        let vc = YHUserAccount.userLogin() ? YHComposeViewController() : OAuthViewController()
+        
+        presentViewController(UINavigationController(rootViewController: vc), animated: true, completion: nil)
+        
+    }
+    
     
     // MARK: - 懒加载
     lazy var composeButton: UIButton = {
@@ -75,6 +85,9 @@ class YHTabBarController: UITabBarController {
         // 设置背景图片
         button.setBackgroundImage(UIImage(named: "tabbar_compose_button"), forState: UIControlState.Normal)
         button.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), forState: UIControlState.Highlighted)
+        
+        // 添加按钮点击事件
+        button.addTarget(self, action: "composeButtonClick", forControlEvents: UIControlEvents.TouchUpInside)
         
         return button
         

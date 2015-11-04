@@ -18,6 +18,7 @@
 		224C34491BE4E1D700A42E1B /* YHStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C34481BE4E1D700A42E1B /* YHStatus.swift */; settings = {ASSET_TAGS = (); }; };
 		224C344B1BE510E700A42E1B /* YHUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C344A1BE510E700A42E1B /* YHUser.swift */; settings = {ASSET_TAGS = (); }; };
 		22594A3A1BE1DD7D00E82EB5 /* YHUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */; settings = {ASSET_TAGS = (); }; };
+		2264B59F1BEA11DD00CC4BC8 /* YHComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264B59E1BEA11DD00CC4BC8 /* YHComposeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		226ACD721BE6EDF6000B0FF3 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACD711BE6EDF6000B0FF3 /* UIScreen+Extension.swift */; settings = {ASSET_TAGS = (); }; };
 		226ACD741BE6F710000B0FF3 /* YHStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACD731BE6F710000B0FF3 /* YHStatusPictureView.swift */; settings = {ASSET_TAGS = (); }; };
 		226ACD761BE73E2A000B0FF3 /* YHStatusForwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACD751BE73E2A000B0FF3 /* YHStatusForwardCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -56,6 +57,7 @@
 		224C34481BE4E1D700A42E1B /* YHStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatus.swift; sourceTree = "<group>"; };
 		224C344A1BE510E700A42E1B /* YHUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUser.swift; sourceTree = "<group>"; };
 		22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUserAccount.swift; sourceTree = "<group>"; };
+		2264B59E1BEA11DD00CC4BC8 /* YHComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHComposeViewController.swift; sourceTree = "<group>"; };
 		226ACD711BE6EDF6000B0FF3 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		226ACD731BE6F710000B0FF3 /* YHStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusPictureView.swift; sourceTree = "<group>"; };
 		226ACD751BE73E2A000B0FF3 /* YHStatusForwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusForwardCell.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 		222EE7CE1BDE48D300B74B33 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				2264B59A1BEA10E400CC4BC8 /* Compose */,
 				227FB6511BE39B9A00FE8C40 /* NewFeature */,
 				222EE7C11BDE48D300B74B33 /* Main */,
 				222EE7BD1BDE48D300B74B33 /* Home */,
@@ -374,6 +377,38 @@
 				223952941BE0E72F00AF2718 /* OAuthViewController.swift */,
 			);
 			path = OAuth;
+			sourceTree = "<group>";
+		};
+		2264B59A1BEA10E400CC4BC8 /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				2264B59B1BEA10E400CC4BC8 /* Controller */,
+				2264B59C1BEA10E400CC4BC8 /* Model */,
+				2264B59D1BEA10E400CC4BC8 /* View */,
+			);
+			path = Compose;
+			sourceTree = "<group>";
+		};
+		2264B59B1BEA10E400CC4BC8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2264B59E1BEA11DD00CC4BC8 /* YHComposeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2264B59C1BEA10E400CC4BC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2264B59D1BEA10E400CC4BC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		226CEBA61BE5F7CA00039883 /* Cell */ = {
@@ -572,6 +607,7 @@
 				226ACD741BE6F710000B0FF3 /* YHStatusPictureView.swift in Sources */,
 				22CEBDE31BE3AD4E009D7D91 /* YHNewFeatureViewController.swift in Sources */,
 				223952951BE0E72F00AF2718 /* OAuthViewController.swift in Sources */,
+				2264B59F1BEA11DD00CC4BC8 /* YHComposeViewController.swift in Sources */,
 				226CEBA81BE5F7CA00039883 /* YHStatusCell.swift in Sources */,
 				226CEBAE1BE62A8C00039883 /* UIButton+Extension.swift in Sources */,
 				224C344B1BE510E700A42E1B /* YHUser.swift in Sources */,
