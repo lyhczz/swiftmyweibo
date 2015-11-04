@@ -30,16 +30,27 @@ class YHHomeController: YHBaseController {
     
     
     /// 加载微博数据
-    private func loadStatus() {
+    @objc private func loadStatus() {
         print("开始加载微博数据")
-        YHStatus.loadStatus { (list, error) -> () in
+        
+        let since_id = statuses?.first?.id ?? 0
+        let max_id = 0
+        
+        YHStatus.loadStatus(since_id, max_id: max_id) { (list, error) -> () in
             // 判断是否加载成功
             if error != nil {
                 SVProgressHUD.showErrorWithStatus("加载微博数据出错", maskType: SVProgressHUDMaskType.Black)
                 return
             }
-            // 将数据赋值给模型数组
-            self.statuses = list
+            if since_id > 0 {
+                // 如果是下拉刷新,将加载到的数据添加到现有数据的前面
+                self.statuses = list! + self.statuses!
+            } else {
+                // 如果是第一次加载,将数据赋值给模型数组
+                self.statuses = list
+            }
+            
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -49,10 +60,18 @@ class YHHomeController: YHBaseController {
         setNavigationBar()
         // 设置标题
         navigationItem.titleView = titleButton
-        // 加载微博数据
-        loadStatus()
+        
         // 设置tableview相关属性
         prepareTableView()
+        
+        // 加载微博数据
+//        loadStatus()
+        
+        // 添加下拉刷新事件
+        refreshControl?.addTarget(self, action: "loadStatus", forControlEvents: UIControlEvents.ValueChanged)
+        
+        // 刚进入首页时调用刷新
+        refreshControl?.sendActionsForControlEvents(UIControlEvents.ValueChanged)
     }
     
     /// 设置tableview相关属性
@@ -63,6 +82,9 @@ class YHHomeController: YHBaseController {
         
         // 取消分割线
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        // 设置菊花
+        refreshControl = YHRefreshContro()
         
     }
     

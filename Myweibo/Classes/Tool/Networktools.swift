@@ -91,7 +91,7 @@ class Networktools: NSObject {
     /// 加载用户数据，负责获取数据
     func loadUserInfo(finshed: NetworkFinishedCallback) {
         // 判断access.token是否存在
-        if YHUserAccount.loadAccount()?.access_token == nil {
+        guard var parameters = tokenDict() else {
             // 将错误告诉调用者
             let error = YHNetWorkError.emptyToken.error()
             finshed(result: nil, error: error)
@@ -107,25 +107,39 @@ class Networktools: NSObject {
         // url
         let urlString = "2/users/show.json"
         // 参数
-        let parameters = ["access_token": YHUserAccount.loadAccount()!.access_token!,"uid": YHUserAccount.loadAccount()!.uid!]
+        parameters = ["uid": YHUserAccount.loadAccount()!.uid!]
         // 用GET发送请求
         requestGET(urlString, parameters: parameters, finshed: finshed)
     }
     
     
     // MARK: - 加载微博数据
-    func loadStatus(finshed:NetworkFinishedCallback) {
+    /**
+    加载微博数据
+    - parameter since_id: 加载大于since_id大的微博, 默认为0
+    - parameter max_id:   加载小于或等于max_id的微博, 默认为0
+    - parameter finished: 回调闭包
+    */
+    func loadStatus(since_id: Int, max_id: Int, finshed:NetworkFinishedCallback) {
         // 判断access.token是否存在
-        if YHUserAccount.loadAccount()?.access_token == nil {
+        guard var parameters = tokenDict() else {
             // 将错误告诉调用者
             let error = YHNetWorkError.emptyToken.error()
             finshed(result: nil, error: error)
             return
         }
+        
+        // 判断是否有since_id
+        if since_id > 0 {
+            parameters["since_id"] = since_id
+        } else if max_id > 0 {
+             // 判断是否传入 max_id
+            parameters["max_id"] = max_id
+        }
+        
+        
         // url地址
         let urlString = "2/statuses/home_timeline.json"
-        // 参数
-        let parameters = ["access_token": YHUserAccount.loadAccount()!.access_token!]
         // 发送请求
         requestGET(urlString, parameters: parameters, finshed: finshed)
     }
@@ -137,6 +151,15 @@ class Networktools: NSObject {
             }) { (_, error) -> Void in
                finshed(result: nil, error: error)
         }
+    }
+    
+    /// 判断access token是否有值,没有值返回nil,如果有值生成一个字典
+    func tokenDict() -> [String: AnyObject]? {
+        if YHUserAccount.loadAccount()?.access_token == nil {
+            return nil
+        }
+        
+        return ["access_token": YHUserAccount.loadAccount()!.access_token!]
     }
     // 类型别名
     typealias NetworkFinishedCallback = (result: [String: AnyObject]?, error: NSError?) ->()

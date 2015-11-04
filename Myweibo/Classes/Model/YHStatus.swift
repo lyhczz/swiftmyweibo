@@ -103,11 +103,17 @@ class YHStatus: NSObject {
     }
     
     // MARK: - 加载模型数据
-    /// 加载模型数据
-    class func loadStatus(finshed:(list: [YHStatus]?,error: NSError?) -> ())  {
+    /**
+    从网络加载数据,字典转模型
+    - parameter since_id: 加载大于since_id大的微博, 默认为0
+    - parameter max_id:   加载小于或等于max_id的微博, 默认为0
+    - parameter finished: 加载数据完成时的回调
+    - parameter error:    错误
+    */
+    class func loadStatus(since_id: Int, max_id: Int, finshed:(list: [YHStatus]?,error: NSError?) -> ())  {
     
         // 利用网络工具类下载数据
-        Networktools.shareInstance.loadStatus { (result, error) -> () in
+        Networktools.shareInstance.loadStatus(since_id, max_id: max_id) { (result, error) -> () in
             // 判断是否出错
             if error != nil {
                 print("加载微博数据出错..\(error)")

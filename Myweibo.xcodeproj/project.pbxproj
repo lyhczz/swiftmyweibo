@@ -36,6 +36,8 @@
 		227FB64E1BE39B0500FE8C40 /* YHMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB64D1BE39B0500FE8C40 /* YHMessageController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6501BE39B2000FE8C40 /* YHDiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB64F1BE39B2000FE8C40 /* YHDiscoverController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6541BE39C5C00FE8C40 /* YHWelconeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6531BE39C5C00FE8C40 /* YHWelconeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		229BFDC11BE8CADC0034F136 /* YHRefreshContro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229BFDC01BE8CADC0034F136 /* YHRefreshContro.swift */; settings = {ASSET_TAGS = (); }; };
+		229BFDC31BE8CBAA0034F136 /* YHRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229BFDC21BE8CBAA0034F136 /* YHRefreshView.xib */; settings = {ASSET_TAGS = (); }; };
 		22CEBDE31BE3AD4E009D7D91 /* YHNewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CEBDE21BE3AD4E009D7D91 /* YHNewFeatureViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2A3A798B71892629C3B47F29 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE98450B0AD42E98A5B26E13 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +74,8 @@
 		227FB64D1BE39B0500FE8C40 /* YHMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHMessageController.swift; path = Myweibo/Classes/Module/Message/Controller/YHMessageController.swift; sourceTree = SOURCE_ROOT; };
 		227FB64F1BE39B2000FE8C40 /* YHDiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHDiscoverController.swift; path = Myweibo/Classes/Module/Discover/Controller/YHDiscoverController.swift; sourceTree = SOURCE_ROOT; };
 		227FB6531BE39C5C00FE8C40 /* YHWelconeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHWelconeViewController.swift; sourceTree = "<group>"; };
+		229BFDC01BE8CADC0034F136 /* YHRefreshContro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHRefreshContro.swift; path = Myweibo/Classes/Module/Home/View/YHRefreshContro.swift; sourceTree = SOURCE_ROOT; };
+		229BFDC21BE8CBAA0034F136 /* YHRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YHRefreshView.xib; path = Myweibo/Classes/Module/Home/View/YHRefreshView.xib; sourceTree = SOURCE_ROOT; };
 		22CEBDE21BE3AD4E009D7D91 /* YHNewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHNewFeatureViewController.swift; sourceTree = "<group>"; };
 		777B80C2E315FF28DDA2CE65 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B62728D0CF43F4993B938692 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -224,8 +228,11 @@
 		222EE7C01BDE48D300B74B33 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				226CEBA61BE5F7CA00039883 /* Cell */,
+				229BFDC01BE8CADC0034F136 /* YHRefreshContro.swift */,
+				229BFDC21BE8CBAA0034F136 /* YHRefreshView.xib */,
 				224C34441BE4CE9400A42E1B /* YHHomeTitleView.swift */,
+				226CEBA61BE5F7CA00039883 /* Cell */,
+				222EE7C51BDE48D300B74B33 /* Message */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,7 +281,7 @@
 				222EE7C81BDE48D300B74B33 /* View */,
 			);
 			name = Message;
-			path = ../Model/Message;
+			path = ../../Message;
 			sourceTree = "<group>";
 		};
 		222EE7C61BDE48D300B74B33 /* Controller */ = {
@@ -346,7 +353,6 @@
 				227FB6511BE39B9A00FE8C40 /* NewFeature */,
 				222EE7C11BDE48D300B74B33 /* Main */,
 				222EE7BD1BDE48D300B74B33 /* Home */,
-				222EE7C51BDE48D300B74B33 /* Message */,
 				222EE7B91BDE48D300B74B33 /* Discover */,
 				222EE7C91BDE48D300B74B33 /* Profile */,
 				222EE7CD1BDE48D300B74B33 /* Test */,
@@ -479,6 +485,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229BFDC31BE8CBAA0034F136 /* YHRefreshView.xib in Resources */,
 				222EE7AE1BDE368B00B74B33 /* LaunchScreen.storyboard in Resources */,
 				222EE7AB1BDE368B00B74B33 /* Assets.xcassets in Resources */,
 			);
@@ -560,6 +567,7 @@
 				226ACD721BE6EDF6000B0FF3 /* UIScreen+Extension.swift in Sources */,
 				227FB6491BE39AB100FE8C40 /* YHVistorView.swift in Sources */,
 				224C34491BE4E1D700A42E1B /* YHStatus.swift in Sources */,
+				229BFDC11BE8CADC0034F136 /* YHRefreshContro.swift in Sources */,
 				227FB6461BE39A7900FE8C40 /* YHBaseController.swift in Sources */,
 				226ACD741BE6F710000B0FF3 /* YHStatusPictureView.swift in Sources */,
 				22CEBDE31BE3AD4E009D7D91 /* YHNewFeatureViewController.swift in Sources */,
