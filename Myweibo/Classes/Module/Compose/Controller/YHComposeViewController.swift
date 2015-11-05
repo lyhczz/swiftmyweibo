@@ -10,12 +10,30 @@ import UIKit
 
 class YHComposeViewController: UIViewController {
 
+    // MARK: - 属性
+    /// toolBar顶部约束
+    var toolBarBottomCons: NSLayoutConstraint?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 设置背景色
         view.backgroundColor = UIColor.whiteColor()
         
         prepareUI()
+        
+        // 添加键盘frame改变的通知
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "KeyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        textView.becomeFirstResponder()
+    }
+    
+    // 注销通知
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK: - 准备UI
@@ -92,7 +110,9 @@ class YHComposeViewController: UIViewController {
         view.addSubview(toolBar)
         
         // 添加约束
-        toolBar.ff_AlignInner(type: ff_AlignType.BottomLeft, referView: view, size: CGSize(width: UIScreen.width(), height: 44))
+        let cons = toolBar.ff_AlignInner(type: ff_AlignType.BottomLeft, referView: view, size: CGSize(width: UIScreen.width(), height: 44))
+        // 获得底部约束
+        toolBarBottomCons = toolBar.ff_Constraint(cons, attribute: NSLayoutAttribute.Bottom)
         
         // 创建toolBar上的items
         var items = [UIBarButtonItem]()
@@ -139,6 +159,20 @@ class YHComposeViewController: UIViewController {
         textView.ff_AlignVertical(type: ff_AlignType.TopRight, referView: toolBar, size: nil)
     }
     
+    // MARK: - 键盘frame改变的方法
+    func KeyboardWillChangeFrame(notifiction: NSNotification) {
+        // 获取键盘的最终frame
+        let endFrame = notifiction.userInfo![UIKeyboardFrameEndUserInfoKey]!.CGRectValue
+        toolBarBottomCons?.constant = -(UIScreen.height() - endFrame.origin.y)
+        
+        // 获取动画时间
+        let duration = notifiction.userInfo![UIKeyboardAnimationDurationUserInfoKey]!.doubleValue
+        // 动画弹出
+        UIView.animateWithDuration(duration) { () -> Void in
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     
     
     // MARK: - 懒加载
@@ -152,15 +186,18 @@ class YHComposeViewController: UIViewController {
         return toolBar
     }()
     
-    private lazy var textView: UITextView = {
+    private lazy var textView: YHPlaceholderTextView = {
         // 创建
-        let textView = UITextView()
-        // 设置背景
-        textView.backgroundColor = UIColor.brownColor()
+        let textView = YHPlaceholderTextView()
         // 设置contentInset
         textView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         textView.alwaysBounceVertical = true
         textView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
+        textView.font = UIFont.systemFontOfSize(16)
+        textView.placeholder = "分享新鲜事..."
+        
+        textView.delegate = self
+        
         return textView
         
     }()
@@ -186,10 +223,19 @@ class YHComposeViewController: UIViewController {
     // 导航栏按钮点击事件
     // 取消
     @objc private func close() {
+        textView.resignFirstResponder()
         dismissViewControllerAnimated(true, completion: nil)
+        
     }
     // 发送
     @objc private func sendStatus() {
         print(__FUNCTION__)
+    }
+}
+
+extension YHComposeViewController: UITextViewDelegate {
+    // 文字改变代理方法
+    func textViewDidChange(textView: UITextView) {
+        navigationItem.rightBarButtonItem?.enabled = true
     }
 }

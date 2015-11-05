@@ -19,6 +19,7 @@
 		224C344B1BE510E700A42E1B /* YHUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C344A1BE510E700A42E1B /* YHUser.swift */; settings = {ASSET_TAGS = (); }; };
 		22594A3A1BE1DD7D00E82EB5 /* YHUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */; settings = {ASSET_TAGS = (); }; };
 		2264B59F1BEA11DD00CC4BC8 /* YHComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264B59E1BEA11DD00CC4BC8 /* YHComposeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2264B5A11BEA574B00CC4BC8 /* YHPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264B5A01BEA574A00CC4BC8 /* YHPlaceholderTextView.swift */; settings = {ASSET_TAGS = (); }; };
 		226ACD721BE6EDF6000B0FF3 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACD711BE6EDF6000B0FF3 /* UIScreen+Extension.swift */; settings = {ASSET_TAGS = (); }; };
 		226ACD741BE6F710000B0FF3 /* YHStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACD731BE6F710000B0FF3 /* YHStatusPictureView.swift */; settings = {ASSET_TAGS = (); }; };
 		226ACD761BE73E2A000B0FF3 /* YHStatusForwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ACD751BE73E2A000B0FF3 /* YHStatusForwardCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -58,6 +59,7 @@
 		224C344A1BE510E700A42E1B /* YHUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUser.swift; sourceTree = "<group>"; };
 		22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUserAccount.swift; sourceTree = "<group>"; };
 		2264B59E1BEA11DD00CC4BC8 /* YHComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHComposeViewController.swift; sourceTree = "<group>"; };
+		2264B5A01BEA574A00CC4BC8 /* YHPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHPlaceholderTextView.swift; sourceTree = "<group>"; };
 		226ACD711BE6EDF6000B0FF3 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		226ACD731BE6F710000B0FF3 /* YHStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusPictureView.swift; sourceTree = "<group>"; };
 		226ACD751BE73E2A000B0FF3 /* YHStatusForwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatusForwardCell.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 		2264B59D1BEA10E400CC4BC8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2264B5A01BEA574A00CC4BC8 /* YHPlaceholderTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				226ACD761BE73E2A000B0FF3 /* YHStatusForwardCell.swift in Sources */,
 				227FB6421BE399FE00FE8C40 /* YHHomeController.swift in Sources */,
 				223952921BE0DBBE00AF2718 /* Networktools.swift in Sources */,
+				2264B5A11BEA574B00CC4BC8 /* YHPlaceholderTextView.swift in Sources */,
 				224C34451BE4CE9400A42E1B /* YHHomeTitleView.swift in Sources */,
 				224C34431BE4849800A42E1B /* UIBarButtonItem+Extension.swift in Sources */,
 				227FB6541BE39C5C00FE8C40 /* YHWelconeViewController.swift in Sources */,
