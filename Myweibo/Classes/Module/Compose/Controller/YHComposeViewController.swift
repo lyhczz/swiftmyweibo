@@ -14,8 +14,11 @@ class YHComposeViewController: UIViewController {
     // MARK: - 属性
     /// toolBar顶部约束
     var toolBarBottomCons: NSLayoutConstraint?
+    /// 微博文本最大长度
+    private let statusMaxLength = 20
     
     
+    // MARK: - 控制器方法
     override func viewDidLoad() {
         super.viewDidLoad()
         // 设置背景色
@@ -45,6 +48,8 @@ class YHComposeViewController: UIViewController {
         setupToolBar()
         // 设置textView
         setupTextView()
+        // 微博剩余长度label
+        prepareLengthTipLabel()
     }
     
     
@@ -160,6 +165,17 @@ class YHComposeViewController: UIViewController {
         textView.ff_AlignVertical(type: ff_AlignType.TopRight, referView: toolBar, size: nil)
     }
     
+    /// 设置微博内容长度label
+    private func prepareLengthTipLabel() {
+        // 添加子控件
+        view.addSubview(lengthTipLabel)
+        
+        // 添加约束
+        lengthTipLabel.ff_AlignVertical(type: ff_AlignType.TopRight, referView: toolBar, size: nil, offset: CGPoint(x: -8, y: -8))
+        // 设置内容
+        lengthTipLabel.text = "\(statusMaxLength)"
+    }
+    
     // MARK: - 键盘frame改变的方法
     func KeyboardWillChangeFrame(notifiction: NSNotification) {
         // 获取键盘的最终frame
@@ -213,6 +229,8 @@ class YHComposeViewController: UIViewController {
         return vc
     }()
     
+    /// 剩余微博文本长度标签
+    private lazy var lengthTipLabel = UILabel(textColor: UIColor.lightGrayColor(), fontSize: 12)
     
     
     // MARK: - 按钮点击事件
@@ -256,6 +274,12 @@ class YHComposeViewController: UIViewController {
         // 获取textView的文本内容
         let status = textView.emoticonText()
         
+        // 判断如果文字超过最大长度,提示用户
+        if status.characters.count > statusMaxLength {
+            SVProgressHUD.showErrorWithStatus("微博内容超出长度", maskType: SVProgressHUDMaskType.Black)
+            return
+        }
+        
         // 显示正在发送
         SVProgressHUD.showWithStatus("正在发送微博", maskType: SVProgressHUDMaskType.Black)
         
@@ -270,7 +294,7 @@ class YHComposeViewController: UIViewController {
             SVProgressHUD.dismiss()
             // 提示成功
             SVProgressHUD.showSuccessWithStatus("发送成功")
-            // 发送成功
+            // 关闭
             self.close()
         }
     }
@@ -281,5 +305,16 @@ extension YHComposeViewController: UITextViewDelegate {
     // 文字改变代理方法
     func textViewDidChange(textView: UITextView) {
         navigationItem.rightBarButtonItem?.enabled = true
+        
+        // 计算剩余文本长度
+        let text = textView.emoticonText()
+        
+        let length = statusMaxLength - text.characters.count
+        
+        // 改变文本内容
+        lengthTipLabel.text = "\(length)"
+        
+        // 改变颜色
+        lengthTipLabel.textColor = length < 0 ? UIColor.redColor() : UIColor.lightGrayColor()
     }
 }
