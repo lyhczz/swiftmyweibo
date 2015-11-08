@@ -146,6 +146,26 @@ class Networktools: NSObject {
         requestGET(urlString, parameters: parameters, finshed: finshed)
     }
     
+    // MARK: - 发送微博
+    func sendStatus(status: String, finshed: NetworkFinishedCallback) {
+        
+        guard var parameters = tokenDict() else {
+            print("没有access_token")
+            return
+        }
+        // url
+        let urlString = "2/statuses/update.json"
+        // 参数
+        parameters["status"] = status
+        // post发送
+        afManager.POST(urlString, parameters: parameters, success: { (_, result) -> Void in
+            finshed(result: result as? [String: AnyObject], error: nil)
+            }) { (_, error) -> Void in
+                finshed(result: nil, error: error)
+        }
+        
+    }
+    
     // MARK: - 封装AFN GET方法
     func requestGET(URLString: String, parameters: AnyObject?,finshed:NetworkFinishedCallback) {
         afManager.GET(URLString, parameters: parameters, success: { (_, result) -> Void in

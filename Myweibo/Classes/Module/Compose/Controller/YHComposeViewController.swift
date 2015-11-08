@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YHComposeViewController: UIViewController {
 
@@ -252,6 +253,26 @@ class YHComposeViewController: UIViewController {
     // 发送
     @objc private func sendStatus() {
         print(__FUNCTION__)
+        // 获取textView的文本内容
+        let status = textView.emoticonText()
+        
+        // 显示正在发送
+        SVProgressHUD.showWithStatus("正在发送微博", maskType: SVProgressHUDMaskType.Black)
+        
+        // 调用网络工具类发送微博
+        Networktools.shareInstance.sendStatus(status) { (result, error) -> () in
+            if error != nil {
+                print("error:\(error)")
+                SVProgressHUD.showErrorWithStatus("网络繁忙,发送失败", maskType: SVProgressHUDMaskType.Black)
+                return
+            }
+            // 关闭提示
+            SVProgressHUD.dismiss()
+            // 提示成功
+            SVProgressHUD.showSuccessWithStatus("发送成功")
+            // 发送成功
+            self.close()
+        }
     }
 }
 
