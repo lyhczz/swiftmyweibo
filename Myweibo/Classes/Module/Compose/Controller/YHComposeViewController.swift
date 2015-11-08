@@ -176,6 +176,7 @@ class YHComposeViewController: UIViewController {
     
     
     // MARK: - 懒加载
+    /// toolBar
     private lazy var toolBar: UIToolbar = {
        
         let toolBar = UIToolbar()
@@ -186,6 +187,7 @@ class YHComposeViewController: UIViewController {
         return toolBar
     }()
     
+    /// textView
     private lazy var textView: YHPlaceholderTextView = {
         // 创建
         let textView = YHPlaceholderTextView()
@@ -199,8 +201,18 @@ class YHComposeViewController: UIViewController {
         textView.delegate = self
         
         return textView
-        
     }()
+    
+    /// 表情输入键盘控制器
+    private lazy var emoticonVC: EmoticonViewController = {
+       
+        let vc = EmoticonViewController()
+        self.addChildViewController(vc)
+        vc.textView = self.textView
+        return vc
+    }()
+    
+    
     
     // MARK: - 按钮点击事件
     // toolBar点击事件
@@ -215,6 +227,16 @@ class YHComposeViewController: UIViewController {
     }
     func emoticon() {
         print("表情")
+        // 先让键盘退回去
+        textView.resignFirstResponder()
+        
+        // 延迟0.25s
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(250 * USEC_PER_SEC)), dispatch_get_main_queue()) { () -> Void in
+            // 切换键盘
+            self.textView.inputView = self.textView.inputView == nil ? self.emoticonVC.view : nil
+            // 再让键盘回来
+            self.textView.becomeFirstResponder()
+        }
     }
     func add() {
         print("加号")
@@ -233,6 +255,7 @@ class YHComposeViewController: UIViewController {
     }
 }
 
+// MARK: - 扩展实现UITextViewDelegate方法
 extension YHComposeViewController: UITextViewDelegate {
     // 文字改变代理方法
     func textViewDidChange(textView: UITextView) {
