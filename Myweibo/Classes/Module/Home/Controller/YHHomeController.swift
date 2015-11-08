@@ -102,11 +102,24 @@ class YHHomeController: YHBaseController {
         // 加载微博数据
 //        loadStatus()
         
+        // 注册cell的点击通知
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pictureSelected:", name: YHStatusPictureViewCellSelectedPictureNotification, object: nil)
+        
         // 添加下拉刷新事件
         refreshControl?.addTarget(self, action: "loadStatus", forControlEvents: UIControlEvents.ValueChanged)
         
         // 刚进入首页时调用刷新
         refreshControl?.sendActionsForControlEvents(UIControlEvents.ValueChanged)
+    }
+    
+    deinit {
+        // 注销通知
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    /// cell点击的响应方法
+    func pictureSelected(notification: NSNotification) {
+        print("接收到通知:\(notification)")
     }
     
     /// 设置tableview相关属性

@@ -36,9 +36,14 @@ class YHStatus: NSObject {
             
             // 有值,遍历将pic_urls 里的string转成NSURL存放在pictureURLs数组里面
             storePictureURLs = [NSURL]()
+            largeStorePictureURLs = [NSURL]()
             for dict in pic_urls! {
                 let value = dict["thumbnail_pic"] as! String
                 storePictureURLs?.append(NSURL(string: value)!)
+                
+                // 转成大图url
+                let largeUrlString = value.stringByReplacingOccurrencesOfString("thumbnail", withString: "large")
+                largeStorePictureURLs?.append(NSURL(string: largeUrlString)!)
             }
         }
     }
@@ -48,9 +53,15 @@ class YHStatus: NSObject {
         // 转发微博返回:retweeted_status.storePictureURLs
         return retweeted_status == nil ? storePictureURLs : retweeted_status!.storePictureURLs
     }
+    /// 大图url
+    var largePictureURLs: [NSURL]? {
+        return retweeted_status == nil ? largeStorePictureURLs : retweeted_status?.largeStorePictureURLs
+    }
     
     /// 存储型属性,存储的是原创微博图片的URL
     var storePictureURLs: [NSURL]?
+    /// 存储型属性,存储的是微博的pic_urls里面对应的大图URL
+    var largeStorePictureURLs: [NSURL]?
     
     /// 用户模型
     var user: YHUser?

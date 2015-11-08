@@ -9,6 +9,10 @@
 import UIKit
 import SDWebImage
 
+let YHStatusPictureViewCellSelectedPictureNotification = "YHStatusPictureViewCellSelectedPictureNotification"
+let YHStatusPictureViewCellSelectedPictureURLKey = "YHStatusPictureViewCellSelectedPictureURLKey"
+let YHStatusPictureViewCellSelectedPictureIndexPathKey = "YHStatusPictureViewCellSelectedPictureIndexPathKey"
+
 class YHStatusPictureView: UICollectionView {
 
     
@@ -36,6 +40,8 @@ class YHStatusPictureView: UICollectionView {
         registerClass(YHStatusPictureViewCell.self, forCellWithReuseIdentifier: pictrueViewCellReuseIdentifier)
         // 设置数据源
         dataSource = self
+        // 设置代理
+        delegate = self
         // 设置颜色
         backgroundColor = UIColor(white: 0.96, alpha: 0.9)
      
@@ -115,7 +121,7 @@ class YHStatusPictureView: UICollectionView {
 }
 
 // MARK: - 扩展,实现数据源
-extension YHStatusPictureView: UICollectionViewDataSource {
+extension YHStatusPictureView: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return status?.pictureURLs?.count ?? 0
@@ -129,6 +135,13 @@ extension YHStatusPictureView: UICollectionViewDataSource {
         
         return cell
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        // 需要将cell的点击事件传递给控制器,通过通知的方法
+        NSNotificationCenter.defaultCenter().postNotificationName(YHStatusPictureViewCellSelectedPictureNotification, object: self, userInfo: [YHStatusPictureViewCellSelectedPictureURLKey: status!.largePictureURLs!, YHStatusPictureViewCellSelectedPictureIndexPathKey: indexPath])
+        
+    }
+    
 }
 
 

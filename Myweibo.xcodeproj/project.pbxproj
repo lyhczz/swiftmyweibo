@@ -17,8 +17,14 @@
 		224C34471BE4DB0D00A42E1B /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */; settings = {ASSET_TAGS = (); }; };
 		224C34491BE4E1D700A42E1B /* YHStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C34481BE4E1D700A42E1B /* YHStatus.swift */; settings = {ASSET_TAGS = (); }; };
 		224C344B1BE510E700A42E1B /* YHUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C344A1BE510E700A42E1B /* YHUser.swift */; settings = {ASSET_TAGS = (); }; };
-		225219651BEF443C00405634 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225219631BEF443C00405634 /* UIImage+Extension.swift */; settings = {ASSET_TAGS = (); }; };
-		225219661BEF443C00405634 /* YHPhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225219641BEF443C00405634 /* YHPhotoSelectorViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		225219711BEF9CB000405634 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225219691BEF9CB000405634 /* UIImage+Extension.swift */; settings = {ASSET_TAGS = (); }; };
+		225219721BEF9CB000405634 /* YHPhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252196A1BEF9CB000405634 /* YHPhotoSelectorViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		225219731BEF9CB000405634 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2252196C1BEF9CB000405634 /* Emoticons.bundle */; settings = {ASSET_TAGS = (); }; };
+		225219741BEF9CB000405634 /* EmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252196D1BEF9CB000405634 /* EmoticonViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		225219751BEF9CB000405634 /* UITextView+Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252196E1BEF9CB000405634 /* UITextView+Emoticon.swift */; settings = {ASSET_TAGS = (); }; };
+		225219761BEF9CB000405634 /* YHEmoticons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252196F1BEF9CB000405634 /* YHEmoticons.swift */; settings = {ASSET_TAGS = (); }; };
+		225219771BEF9CB000405634 /* YHTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225219701BEF9CB000405634 /* YHTextAttachment.swift */; settings = {ASSET_TAGS = (); }; };
+		225219791BEF9D5D00405634 /* YHPhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225219781BEF9D5D00405634 /* YHPhotoBrowserViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		22594A3A1BE1DD7D00E82EB5 /* YHUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */; settings = {ASSET_TAGS = (); }; };
 		2264B59F1BEA11DD00CC4BC8 /* YHComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264B59E1BEA11DD00CC4BC8 /* YHComposeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2264B5A11BEA574B00CC4BC8 /* YHPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264B5A01BEA574A00CC4BC8 /* YHPlaceholderTextView.swift */; settings = {ASSET_TAGS = (); }; };
@@ -40,11 +46,6 @@
 		227FB64E1BE39B0500FE8C40 /* YHMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB64D1BE39B0500FE8C40 /* YHMessageController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6501BE39B2000FE8C40 /* YHDiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB64F1BE39B2000FE8C40 /* YHDiscoverController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6541BE39C5C00FE8C40 /* YHWelconeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6531BE39C5C00FE8C40 /* YHWelconeViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		229B77E71BEED7C3003FBED7 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 229B77E21BEED7C3003FBED7 /* Emoticons.bundle */; settings = {ASSET_TAGS = (); }; };
-		229B77E81BEED7C3003FBED7 /* EmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B77E31BEED7C3003FBED7 /* EmoticonViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		229B77E91BEED7C3003FBED7 /* UITextView+Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B77E41BEED7C3003FBED7 /* UITextView+Emoticon.swift */; settings = {ASSET_TAGS = (); }; };
-		229B77EA1BEED7C3003FBED7 /* YHEmoticons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B77E51BEED7C3003FBED7 /* YHEmoticons.swift */; settings = {ASSET_TAGS = (); }; };
-		229B77EB1BEED7C3003FBED7 /* YHTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B77E61BEED7C3003FBED7 /* YHTextAttachment.swift */; settings = {ASSET_TAGS = (); }; };
 		229BFDC11BE8CADC0034F136 /* YHRefreshContro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229BFDC01BE8CADC0034F136 /* YHRefreshContro.swift */; settings = {ASSET_TAGS = (); }; };
 		229BFDC31BE8CBAA0034F136 /* YHRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229BFDC21BE8CBAA0034F136 /* YHRefreshView.xib */; settings = {ASSET_TAGS = (); }; };
 		22CEBDE31BE3AD4E009D7D91 /* YHNewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CEBDE21BE3AD4E009D7D91 /* YHNewFeatureViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -64,8 +65,14 @@
 		224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		224C34481BE4E1D700A42E1B /* YHStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatus.swift; sourceTree = "<group>"; };
 		224C344A1BE510E700A42E1B /* YHUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUser.swift; sourceTree = "<group>"; };
-		225219631BEF443C00405634 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		225219641BEF443C00405634 /* YHPhotoSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHPhotoSelectorViewController.swift; sourceTree = "<group>"; };
+		225219691BEF9CB000405634 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		2252196A1BEF9CB000405634 /* YHPhotoSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHPhotoSelectorViewController.swift; sourceTree = "<group>"; };
+		2252196C1BEF9CB000405634 /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
+		2252196D1BEF9CB000405634 /* EmoticonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonViewController.swift; sourceTree = "<group>"; };
+		2252196E1BEF9CB000405634 /* UITextView+Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Emoticon.swift"; sourceTree = "<group>"; };
+		2252196F1BEF9CB000405634 /* YHEmoticons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHEmoticons.swift; sourceTree = "<group>"; };
+		225219701BEF9CB000405634 /* YHTextAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHTextAttachment.swift; sourceTree = "<group>"; };
+		225219781BEF9D5D00405634 /* YHPhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHPhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUserAccount.swift; sourceTree = "<group>"; };
 		2264B59E1BEA11DD00CC4BC8 /* YHComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHComposeViewController.swift; sourceTree = "<group>"; };
 		2264B5A01BEA574A00CC4BC8 /* YHPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -87,11 +94,6 @@
 		227FB64D1BE39B0500FE8C40 /* YHMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHMessageController.swift; path = Myweibo/Classes/Module/Message/Controller/YHMessageController.swift; sourceTree = SOURCE_ROOT; };
 		227FB64F1BE39B2000FE8C40 /* YHDiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHDiscoverController.swift; path = Myweibo/Classes/Module/Discover/Controller/YHDiscoverController.swift; sourceTree = SOURCE_ROOT; };
 		227FB6531BE39C5C00FE8C40 /* YHWelconeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHWelconeViewController.swift; sourceTree = "<group>"; };
-		229B77E21BEED7C3003FBED7 /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
-		229B77E31BEED7C3003FBED7 /* EmoticonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonViewController.swift; sourceTree = "<group>"; };
-		229B77E41BEED7C3003FBED7 /* UITextView+Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Emoticon.swift"; sourceTree = "<group>"; };
-		229B77E51BEED7C3003FBED7 /* YHEmoticons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHEmoticons.swift; sourceTree = "<group>"; };
-		229B77E61BEED7C3003FBED7 /* YHTextAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHTextAttachment.swift; sourceTree = "<group>"; };
 		229BFDC01BE8CADC0034F136 /* YHRefreshContro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHRefreshContro.swift; path = Myweibo/Classes/Module/Home/View/YHRefreshContro.swift; sourceTree = SOURCE_ROOT; };
 		229BFDC21BE8CBAA0034F136 /* YHRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YHRefreshView.xib; path = Myweibo/Classes/Module/Home/View/YHRefreshView.xib; sourceTree = SOURCE_ROOT; };
 		22CEBDE21BE3AD4E009D7D91 /* YHNewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHNewFeatureViewController.swift; sourceTree = "<group>"; };
@@ -158,8 +160,6 @@
 		222EE7B61BDE48D300B74B33 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				225219621BEF443C00405634 /* PhotoSelector */,
-				229B77E11BEED7C3003FBED7 /* Emoticon */,
 				224C34421BE4849800A42E1B /* UIBarButtonItem+Extension.swift */,
 				226CEBAB1BE6105E00039883 /* UILabel+Extension.swift */,
 				226CEBAD1BE62A8C00039883 /* UIButton+Extension.swift */,
@@ -171,6 +171,9 @@
 		222EE7B71BDE48D300B74B33 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				225219681BEF9CB000405634 /* PhotoSelector */,
+				2252196B1BEF9CB000405634 /* Emoticon */,
+				225219671BEF9C9E00405634 /* PhotoBrowser */,
 				224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */,
 			);
 			path = Library;
@@ -252,7 +255,6 @@
 				229BFDC21BE8CBAA0034F136 /* YHRefreshView.xib */,
 				224C34441BE4CE9400A42E1B /* YHHomeTitleView.swift */,
 				226CEBA61BE5F7CA00039883 /* Cell */,
-				222EE7C51BDE48D300B74B33 /* Message */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,7 +303,7 @@
 				222EE7C81BDE48D300B74B33 /* View */,
 			);
 			name = Message;
-			path = ../../Message;
+			path = ../Model/Message;
 			sourceTree = "<group>";
 		};
 		222EE7C61BDE48D300B74B33 /* Controller */ = {
@@ -374,6 +376,7 @@
 				227FB6511BE39B9A00FE8C40 /* NewFeature */,
 				222EE7C11BDE48D300B74B33 /* Main */,
 				222EE7BD1BDE48D300B74B33 /* Home */,
+				222EE7C51BDE48D300B74B33 /* Message */,
 				222EE7B91BDE48D300B74B33 /* Discover */,
 				222EE7C91BDE48D300B74B33 /* Profile */,
 				222EE7CD1BDE48D300B74B33 /* Test */,
@@ -397,13 +400,33 @@
 			path = OAuth;
 			sourceTree = "<group>";
 		};
-		225219621BEF443C00405634 /* PhotoSelector */ = {
+		225219671BEF9C9E00405634 /* PhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				225219631BEF443C00405634 /* UIImage+Extension.swift */,
-				225219641BEF443C00405634 /* YHPhotoSelectorViewController.swift */,
+				225219781BEF9D5D00405634 /* YHPhotoBrowserViewController.swift */,
+			);
+			path = PhotoBrowser;
+			sourceTree = "<group>";
+		};
+		225219681BEF9CB000405634 /* PhotoSelector */ = {
+			isa = PBXGroup;
+			children = (
+				225219691BEF9CB000405634 /* UIImage+Extension.swift */,
+				2252196A1BEF9CB000405634 /* YHPhotoSelectorViewController.swift */,
 			);
 			path = PhotoSelector;
+			sourceTree = "<group>";
+		};
+		2252196B1BEF9CB000405634 /* Emoticon */ = {
+			isa = PBXGroup;
+			children = (
+				2252196C1BEF9CB000405634 /* Emoticons.bundle */,
+				2252196D1BEF9CB000405634 /* EmoticonViewController.swift */,
+				2252196E1BEF9CB000405634 /* UITextView+Emoticon.swift */,
+				2252196F1BEF9CB000405634 /* YHEmoticons.swift */,
+				225219701BEF9CB000405634 /* YHTextAttachment.swift */,
+			);
+			path = Emoticon;
 			sourceTree = "<group>";
 		};
 		2264B59A1BEA10E400CC4BC8 /* Compose */ = {
@@ -468,18 +491,6 @@
 				22CEBDE21BE3AD4E009D7D91 /* YHNewFeatureViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		229B77E11BEED7C3003FBED7 /* Emoticon */ = {
-			isa = PBXGroup;
-			children = (
-				229B77E21BEED7C3003FBED7 /* Emoticons.bundle */,
-				229B77E31BEED7C3003FBED7 /* EmoticonViewController.swift */,
-				229B77E41BEED7C3003FBED7 /* UITextView+Emoticon.swift */,
-				229B77E51BEED7C3003FBED7 /* YHEmoticons.swift */,
-				229B77E61BEED7C3003FBED7 /* YHTextAttachment.swift */,
-			);
-			path = Emoticon;
 			sourceTree = "<group>";
 		};
 		2670940E4ADBBB8E825A439C /* Frameworks */ = {
@@ -561,7 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				229BFDC31BE8CBAA0034F136 /* YHRefreshView.xib in Resources */,
-				229B77E71BEED7C3003FBED7 /* Emoticons.bundle in Resources */,
+				225219731BEF9CB000405634 /* Emoticons.bundle in Resources */,
 				222EE7AE1BDE368B00B74B33 /* LaunchScreen.storyboard in Resources */,
 				222EE7AB1BDE368B00B74B33 /* Assets.xcassets in Resources */,
 			);
@@ -625,14 +636,11 @@
 				226CEBAC1BE6105E00039883 /* UILabel+Extension.swift in Sources */,
 				227FB6441BE39A0C00FE8C40 /* YHTabBarController.swift in Sources */,
 				224C34471BE4DB0D00A42E1B /* UIView+AutoLayout.swift in Sources */,
-				225219651BEF443C00405634 /* UIImage+Extension.swift in Sources */,
-				225219661BEF443C00405634 /* YHPhotoSelectorViewController.swift in Sources */,
 				227FB6501BE39B2000FE8C40 /* YHDiscoverController.swift in Sources */,
 				222EE7A41BDE368A00B74B33 /* AppDelegate.swift in Sources */,
 				227FB64E1BE39B0500FE8C40 /* YHMessageController.swift in Sources */,
 				226CEBAA1BE5F81100039883 /* YHStatusTopView.swift in Sources */,
 				227FB64C1BE39AD800FE8C40 /* YHProfileController.swift in Sources */,
-				229B77E91BEED7C3003FBED7 /* UITextView+Emoticon.swift in Sources */,
 				226CEBB01BE62D5000039883 /* YHStatusBottomView.swift in Sources */,
 				226ACD781BE74A6D000B0FF3 /* YHStatusNormalCell.swift in Sources */,
 				226ACD761BE73E2A000B0FF3 /* YHStatusForwardCell.swift in Sources */,
@@ -642,23 +650,27 @@
 				224C34451BE4CE9400A42E1B /* YHHomeTitleView.swift in Sources */,
 				224C34431BE4849800A42E1B /* UIBarButtonItem+Extension.swift in Sources */,
 				227FB6541BE39C5C00FE8C40 /* YHWelconeViewController.swift in Sources */,
-				229B77EA1BEED7C3003FBED7 /* YHEmoticons.swift in Sources */,
 				227FB64A1BE39AB100FE8C40 /* YHMainTabBar.swift in Sources */,
+				225219741BEF9CB000405634 /* EmoticonViewController.swift in Sources */,
+				225219791BEF9D5D00405634 /* YHPhotoBrowserViewController.swift in Sources */,
 				22594A3A1BE1DD7D00E82EB5 /* YHUserAccount.swift in Sources */,
 				226ACD721BE6EDF6000B0FF3 /* UIScreen+Extension.swift in Sources */,
-				229B77E81BEED7C3003FBED7 /* EmoticonViewController.swift in Sources */,
 				227FB6491BE39AB100FE8C40 /* YHVistorView.swift in Sources */,
+				225219761BEF9CB000405634 /* YHEmoticons.swift in Sources */,
 				224C34491BE4E1D700A42E1B /* YHStatus.swift in Sources */,
 				229BFDC11BE8CADC0034F136 /* YHRefreshContro.swift in Sources */,
 				227FB6461BE39A7900FE8C40 /* YHBaseController.swift in Sources */,
 				226ACD741BE6F710000B0FF3 /* YHStatusPictureView.swift in Sources */,
 				22CEBDE31BE3AD4E009D7D91 /* YHNewFeatureViewController.swift in Sources */,
 				223952951BE0E72F00AF2718 /* OAuthViewController.swift in Sources */,
+				225219711BEF9CB000405634 /* UIImage+Extension.swift in Sources */,
 				2264B59F1BEA11DD00CC4BC8 /* YHComposeViewController.swift in Sources */,
-				229B77EB1BEED7C3003FBED7 /* YHTextAttachment.swift in Sources */,
 				226CEBA81BE5F7CA00039883 /* YHStatusCell.swift in Sources */,
 				226CEBAE1BE62A8C00039883 /* UIButton+Extension.swift in Sources */,
+				225219721BEF9CB000405634 /* YHPhotoSelectorViewController.swift in Sources */,
 				224C344B1BE510E700A42E1B /* YHUser.swift in Sources */,
+				225219771BEF9CB000405634 /* YHTextAttachment.swift in Sources */,
+				225219751BEF9CB000405634 /* UITextView+Emoticon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
