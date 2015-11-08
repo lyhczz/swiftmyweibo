@@ -16,6 +16,8 @@ class YHComposeViewController: UIViewController {
     var toolBarBottomCons: NSLayoutConstraint?
     /// 微博文本最大长度
     private let statusMaxLength = 20
+    /// 照片选择器的底部约束
+    private var photoSelectorViewBottomCons:NSLayoutConstraint?
     
     
     // MARK: - 控制器方法
@@ -32,7 +34,11 @@ class YHComposeViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        textView.becomeFirstResponder()
+        // 判断照片选择器是否正在显示
+        if photoSelectorViewBottomCons != 0 {
+            // 主动弹出键盘
+            textView.becomeFirstResponder()
+        }
     }
     
     // 注销通知
@@ -42,14 +48,22 @@ class YHComposeViewController: UIViewController {
     
     // MARK: - 准备UI
     private func prepareUI() {
+        // 添加子控件
+        view.addSubview(textView)
+        view.addSubview(photoSelectorVC.view)
+        view.addSubview(toolBar)
+        
         // 设置导航栏
         setupNavigationBar()
-        // 设置toolBar
-        setupToolBar()
         // 设置textView
         setupTextView()
+        // 照片选择视图
+        preparePhotoSelectorView()
+        // 设置toolBar
+        setupToolBar()
         // 微博剩余长度label
         prepareLengthTipLabel()
+        
     }
     
     
@@ -112,8 +126,7 @@ class YHComposeViewController: UIViewController {
     
     /// 设置ToolBar
     private func setupToolBar() {
-        // 添加子控件
-        view.addSubview(toolBar)
+        
         
         // 添加约束
         let cons = toolBar.ff_AlignInner(type: ff_AlignType.BottomLeft, referView: view, size: CGSize(width: UIScreen.width(), height: 44))
@@ -157,8 +170,7 @@ class YHComposeViewController: UIViewController {
     
     /// 设置textView
     private func setupTextView() {
-        // 添加子控件
-        view.addSubview(textView)
+        
         
         // 添加约束
         textView.ff_AlignInner(type: ff_AlignType.TopLeft, referView: view, size: nil)
@@ -174,6 +186,26 @@ class YHComposeViewController: UIViewController {
         lengthTipLabel.ff_AlignVertical(type: ff_AlignType.TopRight, referView: toolBar, size: nil, offset: CGPoint(x: -8, y: -8))
         // 设置内容
         lengthTipLabel.text = "\(statusMaxLength)"
+    }
+    
+    /// 准备照片选择器视图
+    private func preparePhotoSelectorView() {
+        
+        let photoSelectorView = photoSelectorVC.view
+        // 添加约束
+        photoSelectorView.translatesAutoresizingMaskIntoConstraints = false
+        let viewDict = ["psv": photoSelectorView]
+        
+        // 左右与父控件重合
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[psv]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+        // 底部与父控件重合
+        let photoSelectorBottomCons = NSLayoutConstraint(item: photoSelectorView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: UIScreen.height() * 0.6)
+        view.addConstraint(photoSelectorBottomCons)
+        self.photoSelectorViewBottomCons = photoSelectorBottomCons
+        
+        // 高度
+        view.addConstraint(NSLayoutConstraint(item: photoSelectorView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Height, multiplier: 0.6, constant: 0))
+        
     }
     
     // MARK: - 键盘frame改变的方法
@@ -197,10 +229,8 @@ class YHComposeViewController: UIViewController {
     private lazy var toolBar: UIToolbar = {
        
         let toolBar = UIToolbar()
-        
         // 设置背景
         toolBar.backgroundColor = UIColor(white: 0.8, alpha: 1)
-        
         return toolBar
     }()
     
@@ -209,7 +239,7 @@ class YHComposeViewController: UIViewController {
         // 创建
         let textView = YHPlaceholderTextView()
         // 设置contentInset
-        textView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+//        textView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         textView.alwaysBounceVertical = true
         textView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
         textView.font = UIFont.systemFontOfSize(16)
@@ -229,6 +259,13 @@ class YHComposeViewController: UIViewController {
         return vc
     }()
     
+    /// 照片选择器
+    private lazy var photoSelectorVC: YHPhotoSelectorViewController = {
+        let vc = YHPhotoSelectorViewController()
+        self.addChildViewController(vc)
+        return vc
+    }()
+    
     /// 剩余微博文本长度标签
     private lazy var lengthTipLabel = UILabel(textColor: UIColor.lightGrayColor(), fontSize: 12)
     
@@ -237,6 +274,15 @@ class YHComposeViewController: UIViewController {
     // toolBar点击事件
     func picture() {
         print("图片")
+        
+        // 显示照片选择器
+        self.photoSelectorViewBottomCons?.constant = 0
+        // 隐藏键盘
+        textView.resignFirstResponder()
+        // 动画
+        UIView.animateWithDuration(0.25) { () -> Void in
+            self.view.layoutIfNeeded()
+        }
     }
     func trend() {
         print("#")

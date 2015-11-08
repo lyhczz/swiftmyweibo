@@ -17,6 +17,8 @@
 		224C34471BE4DB0D00A42E1B /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */; settings = {ASSET_TAGS = (); }; };
 		224C34491BE4E1D700A42E1B /* YHStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C34481BE4E1D700A42E1B /* YHStatus.swift */; settings = {ASSET_TAGS = (); }; };
 		224C344B1BE510E700A42E1B /* YHUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C344A1BE510E700A42E1B /* YHUser.swift */; settings = {ASSET_TAGS = (); }; };
+		225219651BEF443C00405634 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225219631BEF443C00405634 /* UIImage+Extension.swift */; settings = {ASSET_TAGS = (); }; };
+		225219661BEF443C00405634 /* YHPhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225219641BEF443C00405634 /* YHPhotoSelectorViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		22594A3A1BE1DD7D00E82EB5 /* YHUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */; settings = {ASSET_TAGS = (); }; };
 		2264B59F1BEA11DD00CC4BC8 /* YHComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264B59E1BEA11DD00CC4BC8 /* YHComposeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2264B5A11BEA574B00CC4BC8 /* YHPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264B5A01BEA574A00CC4BC8 /* YHPlaceholderTextView.swift */; settings = {ASSET_TAGS = (); }; };
@@ -62,6 +64,8 @@
 		224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		224C34481BE4E1D700A42E1B /* YHStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHStatus.swift; sourceTree = "<group>"; };
 		224C344A1BE510E700A42E1B /* YHUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUser.swift; sourceTree = "<group>"; };
+		225219631BEF443C00405634 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		225219641BEF443C00405634 /* YHPhotoSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHPhotoSelectorViewController.swift; sourceTree = "<group>"; };
 		22594A391BE1DD7D00E82EB5 /* YHUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHUserAccount.swift; sourceTree = "<group>"; };
 		2264B59E1BEA11DD00CC4BC8 /* YHComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHComposeViewController.swift; sourceTree = "<group>"; };
 		2264B5A01BEA574A00CC4BC8 /* YHPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 		222EE7B61BDE48D300B74B33 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				225219621BEF443C00405634 /* PhotoSelector */,
 				229B77E11BEED7C3003FBED7 /* Emoticon */,
 				224C34421BE4849800A42E1B /* UIBarButtonItem+Extension.swift */,
 				226CEBAB1BE6105E00039883 /* UILabel+Extension.swift */,
@@ -392,6 +397,15 @@
 			path = OAuth;
 			sourceTree = "<group>";
 		};
+		225219621BEF443C00405634 /* PhotoSelector */ = {
+			isa = PBXGroup;
+			children = (
+				225219631BEF443C00405634 /* UIImage+Extension.swift */,
+				225219641BEF443C00405634 /* YHPhotoSelectorViewController.swift */,
+			);
+			path = PhotoSelector;
+			sourceTree = "<group>";
+		};
 		2264B59A1BEA10E400CC4BC8 /* Compose */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +625,8 @@
 				226CEBAC1BE6105E00039883 /* UILabel+Extension.swift in Sources */,
 				227FB6441BE39A0C00FE8C40 /* YHTabBarController.swift in Sources */,
 				224C34471BE4DB0D00A42E1B /* UIView+AutoLayout.swift in Sources */,
+				225219651BEF443C00405634 /* UIImage+Extension.swift in Sources */,
+				225219661BEF443C00405634 /* YHPhotoSelectorViewController.swift in Sources */,
 				227FB6501BE39B2000FE8C40 /* YHDiscoverController.swift in Sources */,
 				222EE7A41BDE368A00B74B33 /* AppDelegate.swift in Sources */,
 				227FB64E1BE39B0500FE8C40 /* YHMessageController.swift in Sources */,
