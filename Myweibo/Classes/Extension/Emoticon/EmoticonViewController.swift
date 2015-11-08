@@ -159,7 +159,7 @@ class EmoticonViewController: UIViewController {
     private lazy var collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: YHEmoticonLayout())
     
     /// 表情包数据
-    private lazy var packages = YHEmoticonPackage.loadPackages()
+    private lazy var packages = YHEmoticonPackage.packages
 }
 
 // MARK: - 扩展 CZEmoticonViewController 实现 UICollectionViewDataSource UICollectionViewDelegate 协议
@@ -202,6 +202,11 @@ extension EmoticonViewController: UICollectionViewDataSource, UICollectionViewDe
         let emoticon = packages[indexPath.section].emoticons![indexPath.item]
         // 插入表情
         textView?.insertEmoticon(emoticon)
+        
+        // 添加到最近表情
+        if indexPath.section != 0 {
+            YHEmoticonPackage.addFavorate(emoticon)
+        }
     }
 }
 

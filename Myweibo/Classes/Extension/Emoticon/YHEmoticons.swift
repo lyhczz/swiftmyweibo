@@ -24,6 +24,9 @@ class YHEmoticonPackage: NSObject {
     /// 表情模型数组
     var emoticons: [YHEmoticon]?
     
+    // 每次从磁盘加载表情包耗性能,第一次从本地加载表情包数据,保存到内存中.以后重内存中加载
+    static let packages = YHEmoticonPackage.loadPackages()
+    
     /// 对象打印方法
     override var description: String {
         return "表情包模型: id:\(id), group_name_cn:\(group_name_cn), emoticons:\(emoticons)"
@@ -35,6 +38,8 @@ class YHEmoticonPackage: NSObject {
         super.init()
     }
     
+    
+    // MARK: - 外部方法
     /**
     加载所有的表情包
     - returns: 表情包数组
@@ -127,6 +132,47 @@ class YHEmoticonPackage: NSObject {
         appendEmptyEmoticon()
     }
     
+    /// 添加最近表情
+    class func addFavorate(emoticon: YHEmoticon) {
+        // 不添加删除按钮
+        if emoticon.removeEmoticon {
+            return
+        }
+        
+        // 使用次数+1
+        emoticon.times++
+        
+        // 获取最近表情包数组
+        var recentEmoticonPackage = packages[0].emoticons!
+        
+        // 移除删除按钮
+        let removeEmoticon = recentEmoticonPackage.removeLast()
+        
+        // 如果最近表情已经存在,不需要重复添加
+        let contains = recentEmoticonPackage.contains(emoticon)
+        if !contains {
+            // 添加表情
+            recentEmoticonPackage.append(emoticon)
+        }
+        
+        
+        // 排序
+        recentEmoticonPackage = recentEmoticonPackage.sort({ (e1, e2) -> Bool in
+            return e1.times > e2.times
+        })
+        
+        // 删除一个
+        if !contains {
+            recentEmoticonPackage.removeLast()
+        }
+        // 把删除按钮添加回去
+        recentEmoticonPackage.append(removeEmoticon)
+        
+        // 重新赋值回去
+        packages[0].emoticons = recentEmoticonPackage
+        
+    }
+    
     /// 添加空白按钮
     private func appendEmptyEmoticon() {
         // 获取最后一页的个数
@@ -193,6 +239,9 @@ class YHEmoticon: NSObject {
     
     /// 是否是删除按钮, true表示删除按钮
     var removeEmoticon: Bool = false
+    
+    /// 使用次数
+    var times = 0
     
     // MARK: - 构造函数
     /// 字典转模型
