@@ -326,11 +326,15 @@ class YHComposeViewController: UIViewController {
             return
         }
         
+        // 获得图片
+        let image = photoSelectorVC.photos.first
+        
+        
         // 显示正在发送
         SVProgressHUD.showWithStatus("正在发送微博", maskType: SVProgressHUDMaskType.Black)
         
         // 调用网络工具类发送微博
-        Networktools.shareInstance.sendStatus(status) { (result, error) -> () in
+        Networktools.shareInstance.sendStatus(image,status: status) { (result, error) -> () in
             if error != nil {
                 print("error:\(error)")
                 SVProgressHUD.showErrorWithStatus("网络繁忙,发送失败", maskType: SVProgressHUDMaskType.Black)

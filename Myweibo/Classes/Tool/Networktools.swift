@@ -147,22 +147,42 @@ class Networktools: NSObject {
     }
     
     // MARK: - 发送微博
-    func sendStatus(status: String, finshed: NetworkFinishedCallback) {
+    func sendStatus(image: UIImage? ,status: String, finshed: NetworkFinishedCallback) {
         
         guard var parameters = tokenDict() else {
             print("没有access_token")
             return
         }
-        // url
-        let urlString = "2/statuses/update.json"
+        
         // 参数
         parameters["status"] = status
-        // post发送
-        afManager.POST(urlString, parameters: parameters, success: { (_, result) -> Void in
-            finshed(result: result as? [String: AnyObject], error: nil)
-            }) { (_, error) -> Void in
-                finshed(result: nil, error: error)
+        
+        // 判断是否有图片
+        if let newImage = image {
+            // 有图片,发送带图片的微博
+            let urlString = "https://upload.api.weibo.com/2/statuses/upload.json"
+            afManager.POST(urlString, parameters: parameters, constructingBodyWithBlock: { (formData) -> Void in
+                
+                let data = UIImagePNGRepresentation(newImage)!
+                
+                formData.appendPartWithFileData(data, name: "pic", fileName: "sb", mimeType: "image/png")
+                }, success: { (_, result) -> Void in
+                    finshed(result: result as? [String: AnyObject], error: nil)
+                }, failure: { (_, error) -> Void in
+                    finshed(result: nil, error: error)
+            })
+            
+        } else {
+            // url
+            let urlString = "2/statuses/update.json"
+            // post发送纯文本微博
+            afManager.POST(urlString, parameters: parameters, success: { (_, result) -> Void in
+                finshed(result: result as? [String: AnyObject], error: nil)
+                }) { (_, error) -> Void in
+                    finshed(result: nil, error: error)
+            }
         }
+        
         
     }
     

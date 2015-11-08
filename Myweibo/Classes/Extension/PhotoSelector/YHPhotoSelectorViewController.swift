@@ -12,7 +12,7 @@ class YHPhotoSelectorViewController: UICollectionViewController, YHPhotoSelector
 
     // MARK: - 属性
     /// 照片数组
-    private var photos = [UIImage]()
+    var photos = [UIImage]()
     
     /// 最多选择照片数
     private let maxPhotoCount = 6
