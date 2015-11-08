@@ -76,6 +76,15 @@ extension UITextView {
             
             // 设置光标位置
             self.selectedRange = NSRange(location: selectedRange.location + 1, length: 0)
+            // 主动调用 textViewDidChange
+            delegate?.textViewDidChange!(self)
+            // 主动发送 UITextViewTextDidChangeNotification 通知
+            NSNotificationCenter.defaultCenter().postNotificationName(UITextViewTextDidChangeNotification, object: self)
+        }
+        
+        // 如果是删除按钮,删除文字
+        if emoticon.removeEmoticon {
+            deleteBackward()
         }
     }
 }
