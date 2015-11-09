@@ -47,6 +47,7 @@
 		227FB6501BE39B2000FE8C40 /* YHDiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB64F1BE39B2000FE8C40 /* YHDiscoverController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6541BE39C5C00FE8C40 /* YHWelconeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6531BE39C5C00FE8C40 /* YHWelconeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FEDEC1BF0365A002A1645 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FEDEB1BF0365A002A1645 /* UIColor+Extension.swift */; settings = {ASSET_TAGS = (); }; };
+		227FEDEE1BF03EEA002A1645 /* YHPhotoBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FEDED1BF03EEA002A1645 /* YHPhotoBrowserCell.swift */; settings = {ASSET_TAGS = (); }; };
 		229BFDC11BE8CADC0034F136 /* YHRefreshContro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229BFDC01BE8CADC0034F136 /* YHRefreshContro.swift */; settings = {ASSET_TAGS = (); }; };
 		229BFDC31BE8CBAA0034F136 /* YHRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229BFDC21BE8CBAA0034F136 /* YHRefreshView.xib */; settings = {ASSET_TAGS = (); }; };
 		22CEBDE31BE3AD4E009D7D91 /* YHNewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CEBDE21BE3AD4E009D7D91 /* YHNewFeatureViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -96,6 +97,7 @@
 		227FB64F1BE39B2000FE8C40 /* YHDiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHDiscoverController.swift; path = Myweibo/Classes/Module/Discover/Controller/YHDiscoverController.swift; sourceTree = SOURCE_ROOT; };
 		227FB6531BE39C5C00FE8C40 /* YHWelconeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHWelconeViewController.swift; sourceTree = "<group>"; };
 		227FEDEB1BF0365A002A1645 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		227FEDED1BF03EEA002A1645 /* YHPhotoBrowserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHPhotoBrowserCell.swift; sourceTree = "<group>"; };
 		229BFDC01BE8CADC0034F136 /* YHRefreshContro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHRefreshContro.swift; path = Myweibo/Classes/Module/Home/View/YHRefreshContro.swift; sourceTree = SOURCE_ROOT; };
 		229BFDC21BE8CBAA0034F136 /* YHRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YHRefreshView.xib; path = Myweibo/Classes/Module/Home/View/YHRefreshView.xib; sourceTree = SOURCE_ROOT; };
 		22CEBDE21BE3AD4E009D7D91 /* YHNewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHNewFeatureViewController.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				225219781BEF9D5D00405634 /* YHPhotoBrowserViewController.swift */,
+				227FEDED1BF03EEA002A1645 /* YHPhotoBrowserCell.swift */,
 			);
 			path = PhotoBrowser;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				224C34431BE4849800A42E1B /* UIBarButtonItem+Extension.swift in Sources */,
 				227FB6541BE39C5C00FE8C40 /* YHWelconeViewController.swift in Sources */,
 				227FB64A1BE39AB100FE8C40 /* YHMainTabBar.swift in Sources */,
+				227FEDEE1BF03EEA002A1645 /* YHPhotoBrowserCell.swift in Sources */,
 				225219741BEF9CB000405634 /* EmoticonViewController.swift in Sources */,
 				225219791BEF9D5D00405634 /* YHPhotoBrowserViewController.swift in Sources */,
 				22594A3A1BE1DD7D00E82EB5 /* YHUserAccount.swift in Sources */,

@@ -97,7 +97,7 @@ class YHPhotoBrowserViewController: UIViewController {
     /// 准备CollectionView
     private func prepareCollectionView() {
         // 注册cell
-        collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: YHPhotoBrowserViewCellIdentifier)
+        collectionView.registerClass(YHPhotoBrowserCell.self, forCellWithReuseIdentifier: YHPhotoBrowserViewCellIdentifier)
         
         // itemSize 
         layout.itemSize = view.bounds.size
@@ -142,7 +142,12 @@ extension YHPhotoBrowserViewController: UICollectionViewDelegate,UICollectionVie
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(YHPhotoBrowserViewCellIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(YHPhotoBrowserViewCellIdentifier, forIndexPath: indexPath) as! YHPhotoBrowserCell
+        // 获得对应的url
+        let url = urls[indexPath.item]
+        // 赋值给cell
+        cell.url = url
+        
         cell.backgroundColor = UIColor.randomColor()
         
         return cell
