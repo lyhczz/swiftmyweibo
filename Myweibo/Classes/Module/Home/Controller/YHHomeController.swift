@@ -119,8 +119,24 @@ class YHHomeController: YHBaseController {
     
     /// cell点击的响应方法
     func pictureSelected(notification: NSNotification) {
-        print("接收到通知:\(notification)")
+        
+        // 获取参数
+        guard let urls = notification.userInfo?[YHStatusPictureViewCellSelectedPictureURLKey] as? [NSURL] else {
+            print("没有urls")
+            return
+        }
+        guard let indexPath = notification.userInfo?[YHStatusPictureViewCellSelectedPictureIndexPathKey] as? NSIndexPath else {
+            print("没有indexPath")
+            return
+        }
+        
+        // 弹出照片浏览器
+        let controller = YHPhotoBrowserViewController(urls: urls, indexPath: indexPath)
+        
+        presentViewController(controller, animated: true, completion: nil)
+        
     }
+    
     
     /// 设置tableview相关属性
     func prepareTableView() {

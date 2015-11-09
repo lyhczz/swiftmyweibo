@@ -21,4 +21,15 @@ extension UIButton {
         // 图片
         setImage(UIImage(named: imageName), forState: UIControlState.Normal)
     }
+    
+    convenience init(bkgImageName: String, title: String, titleColor: UIColor, fontSzie: CGFloat) {
+        self.init()
+        // 设置背景图片
+        setBackgroundImage(UIImage(named: bkgImageName), forState: UIControlState.Normal)
+        
+        // 设置文字内容
+        setTitle(title, forState: UIControlState.Normal)
+        setTitleColor(titleColor, forState: UIControlState.Normal)
+        titleLabel?.font = UIFont.systemFontOfSize(fontSzie)
+    }
 }

@@ -46,6 +46,7 @@
 		227FB64E1BE39B0500FE8C40 /* YHMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB64D1BE39B0500FE8C40 /* YHMessageController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6501BE39B2000FE8C40 /* YHDiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB64F1BE39B2000FE8C40 /* YHDiscoverController.swift */; settings = {ASSET_TAGS = (); }; };
 		227FB6541BE39C5C00FE8C40 /* YHWelconeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FB6531BE39C5C00FE8C40 /* YHWelconeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		227FEDEC1BF0365A002A1645 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FEDEB1BF0365A002A1645 /* UIColor+Extension.swift */; settings = {ASSET_TAGS = (); }; };
 		229BFDC11BE8CADC0034F136 /* YHRefreshContro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229BFDC01BE8CADC0034F136 /* YHRefreshContro.swift */; settings = {ASSET_TAGS = (); }; };
 		229BFDC31BE8CBAA0034F136 /* YHRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229BFDC21BE8CBAA0034F136 /* YHRefreshView.xib */; settings = {ASSET_TAGS = (); }; };
 		22CEBDE31BE3AD4E009D7D91 /* YHNewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CEBDE21BE3AD4E009D7D91 /* YHNewFeatureViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -94,6 +95,7 @@
 		227FB64D1BE39B0500FE8C40 /* YHMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHMessageController.swift; path = Myweibo/Classes/Module/Message/Controller/YHMessageController.swift; sourceTree = SOURCE_ROOT; };
 		227FB64F1BE39B2000FE8C40 /* YHDiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHDiscoverController.swift; path = Myweibo/Classes/Module/Discover/Controller/YHDiscoverController.swift; sourceTree = SOURCE_ROOT; };
 		227FB6531BE39C5C00FE8C40 /* YHWelconeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHWelconeViewController.swift; sourceTree = "<group>"; };
+		227FEDEB1BF0365A002A1645 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		229BFDC01BE8CADC0034F136 /* YHRefreshContro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHRefreshContro.swift; path = Myweibo/Classes/Module/Home/View/YHRefreshContro.swift; sourceTree = SOURCE_ROOT; };
 		229BFDC21BE8CBAA0034F136 /* YHRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YHRefreshView.xib; path = Myweibo/Classes/Module/Home/View/YHRefreshView.xib; sourceTree = SOURCE_ROOT; };
 		22CEBDE21BE3AD4E009D7D91 /* YHNewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHNewFeatureViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		222EE7B61BDE48D300B74B33 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				227FEDEB1BF0365A002A1645 /* UIColor+Extension.swift */,
 				224C34421BE4849800A42E1B /* UIBarButtonItem+Extension.swift */,
 				226CEBAB1BE6105E00039883 /* UILabel+Extension.swift */,
 				226CEBAD1BE62A8C00039883 /* UIButton+Extension.swift */,
@@ -171,10 +174,10 @@
 		222EE7B71BDE48D300B74B33 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */,
 				225219681BEF9CB000405634 /* PhotoSelector */,
 				2252196B1BEF9CB000405634 /* Emoticon */,
 				225219671BEF9C9E00405634 /* PhotoBrowser */,
-				224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -372,8 +375,9 @@
 		222EE7CE1BDE48D300B74B33 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				2264B59A1BEA10E400CC4BC8 /* Compose */,
 				227FB6511BE39B9A00FE8C40 /* NewFeature */,
+				2264B59A1BEA10E400CC4BC8 /* Compose */,
+				2264B59D1BEA10E400CC4BC8 /* View */,
 				222EE7C11BDE48D300B74B33 /* Main */,
 				222EE7BD1BDE48D300B74B33 /* Home */,
 				222EE7C51BDE48D300B74B33 /* Message */,
@@ -434,7 +438,6 @@
 			children = (
 				2264B59B1BEA10E400CC4BC8 /* Controller */,
 				2264B59C1BEA10E400CC4BC8 /* Model */,
-				2264B59D1BEA10E400CC4BC8 /* View */,
 			);
 			path = Compose;
 			sourceTree = "<group>";
@@ -459,7 +462,8 @@
 			children = (
 				2264B5A01BEA574A00CC4BC8 /* YHPlaceholderTextView.swift */,
 			);
-			path = View;
+			name = View;
+			path = Compose/View;
 			sourceTree = "<group>";
 		};
 		226CEBA61BE5F7CA00039883 /* Cell */ = {
@@ -669,6 +673,7 @@
 				226CEBAE1BE62A8C00039883 /* UIButton+Extension.swift in Sources */,
 				225219721BEF9CB000405634 /* YHPhotoSelectorViewController.swift in Sources */,
 				224C344B1BE510E700A42E1B /* YHUser.swift in Sources */,
+				227FEDEC1BF0365A002A1645 /* UIColor+Extension.swift in Sources */,
 				225219771BEF9CB000405634 /* YHTextAttachment.swift in Sources */,
 				225219751BEF9CB000405634 /* UITextView+Emoticon.swift in Sources */,
 			);
