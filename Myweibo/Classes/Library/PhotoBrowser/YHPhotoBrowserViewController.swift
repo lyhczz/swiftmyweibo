@@ -148,7 +148,7 @@ extension YHPhotoBrowserViewController: UICollectionViewDelegate,UICollectionVie
         // 赋值给cell
         cell.url = url
         
-        cell.backgroundColor = UIColor.randomColor()
+//        cell.backgroundColor = UIColor.randomColor()
         
         return cell
     }
