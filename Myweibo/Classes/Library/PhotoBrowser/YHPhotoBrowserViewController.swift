@@ -40,6 +40,8 @@ class YHPhotoBrowserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.frame.size.width += 15
+        
         prepareUI()
         
         pageLabel.text = "\(indexPath.item + 1) / \(urls.count)"
@@ -75,8 +77,9 @@ class YHPhotoBrowserViewController: UIViewController {
         let viewDict = ["cv": collectionView, "pl": pageLabel, "cb": closeButton, "sb": saveButton]
         
         // collectionView填充父控件
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[cv]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[cv]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+//        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[cv]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+//        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[cv]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+        collectionView.frame = view.bounds
         
         // pageLabel
         // 水平居中

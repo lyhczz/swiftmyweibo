@@ -12,6 +12,7 @@
 		222EE7AE1BDE368B00B74B33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222EE7AC1BDE368B00B74B33 /* LaunchScreen.storyboard */; };
 		223952921BE0DBBE00AF2718 /* Networktools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223952911BE0DBBE00AF2718 /* Networktools.swift */; settings = {ASSET_TAGS = (); }; };
 		223952951BE0E72F00AF2718 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223952941BE0E72F00AF2718 /* OAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2242E9501BF316620039E40C /* YHImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2242E94F1BF316620039E40C /* YHImageView.swift */; settings = {ASSET_TAGS = (); }; };
 		224C34431BE4849800A42E1B /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C34421BE4849800A42E1B /* UIBarButtonItem+Extension.swift */; settings = {ASSET_TAGS = (); }; };
 		224C34451BE4CE9400A42E1B /* YHHomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C34441BE4CE9400A42E1B /* YHHomeTitleView.swift */; settings = {ASSET_TAGS = (); }; };
 		224C34471BE4DB0D00A42E1B /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */; settings = {ASSET_TAGS = (); }; };
@@ -62,6 +63,7 @@
 		222EE7AF1BDE368B00B74B33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		223952911BE0DBBE00AF2718 /* Networktools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networktools.swift; sourceTree = "<group>"; };
 		223952941BE0E72F00AF2718 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		2242E94F1BF316620039E40C /* YHImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHImageView.swift; sourceTree = "<group>"; };
 		224C34421BE4849800A42E1B /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		224C34441BE4CE9400A42E1B /* YHHomeTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YHHomeTitleView.swift; path = Myweibo/Classes/Extension/YHHomeTitleView.swift; sourceTree = SOURCE_ROOT; };
 		224C34461BE4DB0D00A42E1B /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 			children = (
 				225219781BEF9D5D00405634 /* YHPhotoBrowserViewController.swift */,
 				227FEDED1BF03EEA002A1645 /* YHPhotoBrowserCell.swift */,
+				2242E94F1BF316620039E40C /* YHImageView.swift */,
 			);
 			path = PhotoBrowser;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				224C344B1BE510E700A42E1B /* YHUser.swift in Sources */,
 				227FEDEC1BF0365A002A1645 /* UIColor+Extension.swift in Sources */,
 				225219771BEF9CB000405634 /* YHTextAttachment.swift in Sources */,
+				2242E9501BF316620039E40C /* YHImageView.swift in Sources */,
 				225219751BEF9CB000405634 /* UITextView+Emoticon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

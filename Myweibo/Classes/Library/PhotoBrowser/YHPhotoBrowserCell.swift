@@ -8,6 +8,8 @@
 
 import UIKit
 
+let YHPhotoBrowserCellminimumZoomScale: CGFloat = 0.5
+
 class YHPhotoBrowserCell: UICollectionViewCell {
     
     // MARK: - 属性
@@ -73,8 +75,8 @@ class YHPhotoBrowserCell: UICollectionViewCell {
             let offsetY = (scrollView.bounds.height - size.height) * 0.5
             
             // 设置image的frame
-            imageView.frame = CGRect(origin: CGPoint(x: 0, y: offsetY), size: size)
-            
+            imageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: size)
+            scrollView.contentInset = UIEdgeInsets(top: offsetY, left: 0, bottom: offsetY, right: 0)
         } else {
             // 设置frame
             imageView.frame = CGRect(origin: CGPoint.zero, size: size)
@@ -95,7 +97,12 @@ class YHPhotoBrowserCell: UICollectionViewCell {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         indicator.translatesAutoresizingMaskIntoConstraints = false
         
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[scrollView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["scrollView": scrollView]))
+        // 设置缩放
+        scrollView.maximumZoomScale = 2
+        scrollView.minimumZoomScale = YHPhotoBrowserCellminimumZoomScale
+        scrollView.delegate = self
+        
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[scrollView]-15-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["scrollView": scrollView]))
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[scrollView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["scrollView": scrollView]))
         
         // 加载指示器
@@ -110,10 +117,46 @@ class YHPhotoBrowserCell: UICollectionViewCell {
     private lazy var scrollView = UIScrollView()
     
     // imageView
-    private lazy var imageView = UIImageView()
+    private lazy var imageView: YHImageView = YHImageView()
     
     // 加载指示器
     private lazy var indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+}
+
+// MARK: - 扩展 CZPhotoBrowserCell 实现 UIScrollViewDelegate 协议
+extension YHPhotoBrowserCell: UIScrollViewDelegate {
     
+    // 返回缩放的View
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+    
+    // 缩放时调用
+    func scrollViewDidZoom(scrollView: UIScrollView) {
+        
+    }
+    
+    // 缩放结束调用
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
+        // 使 imageView显示在中间位置
+        var offestX = (scrollView.bounds.width - imageView.frame.width) * 0.5
+        var offestY = (scrollView.bounds.height - imageView.frame.height) * 0.5
+        
+        
+        offestX = offestX < 0 ? 0 : offestX
+        offestY = offestY < 0 ? 0 : offestY
+        UIView.animateWithDuration(0.25) { () -> Void in
+            scrollView.contentInset = UIEdgeInsets(top: offestY, left: offestX, bottom: offestY, right: offestX)
+        }
+    }
     
 }
+
+
+
+
+
+
+
+
+
