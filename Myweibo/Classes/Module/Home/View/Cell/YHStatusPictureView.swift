@@ -153,6 +153,11 @@ class YHStatusPictureViewCell: UICollectionViewCell {
         didSet {
             // 加载图片
             iconView.sd_setImageWithURL(imageUrl)
+            
+            // 判断是否是gif
+            let gif = (imageUrl!.absoluteString as NSString).pathExtension.lowercaseString == "gif"
+            
+            gifImageView.hidden = !gif
         }
     }
     
@@ -172,9 +177,11 @@ class YHStatusPictureViewCell: UICollectionViewCell {
     private func prepareUI() {
         // 添加子控件
         contentView.addSubview(iconView)
+        contentView.addSubview(gifImageView)
         
         // 添加约束
         iconView.ff_Fill(iconView)
+        gifImageView.ff_AlignInner(type: ff_AlignType.BottomRight, referView: contentView, size: nil)
     }
     
     // MARK: - 懒加载控件
@@ -188,6 +195,10 @@ class YHStatusPictureViewCell: UICollectionViewCell {
         return imageView
     
     }()
+    
+    /// git 图标
+    private lazy var gifImageView: UIImageView = UIImageView(image: UIImage(named: "timeline_image_gif"))
+    
 }
 
 

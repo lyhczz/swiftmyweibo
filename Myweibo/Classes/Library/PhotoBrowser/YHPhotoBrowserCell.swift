@@ -24,6 +24,8 @@ class YHPhotoBrowserCell: UICollectionViewCell {
             
             // 将imageView置空
             imageView.image = nil
+            // 清除scrollView的设置
+            resetScrollView()
 //            // 布局scrollView
 //            self.layoutIfNeeded()
             
@@ -45,6 +47,13 @@ class YHPhotoBrowserCell: UICollectionViewCell {
 
             }
         }
+    }
+    
+    private func resetScrollView() {
+        scrollView.contentInset = UIEdgeInsetsZero
+        scrollView.contentSize = CGSizeZero
+        scrollView.contentOffset = CGPointZero
+        imageView.transform = CGAffineTransformIdentity
     }
     
     // MARK: - 构造函数
@@ -117,7 +126,7 @@ class YHPhotoBrowserCell: UICollectionViewCell {
     private lazy var scrollView = UIScrollView()
     
     // imageView
-    private lazy var imageView: YHImageView = YHImageView()
+    lazy var imageView: YHImageView = YHImageView()
     
     // 加载指示器
     private lazy var indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)

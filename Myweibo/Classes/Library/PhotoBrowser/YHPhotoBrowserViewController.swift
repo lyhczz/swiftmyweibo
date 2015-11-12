@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YHPhotoBrowserViewController: UIViewController {
 
@@ -32,10 +33,6 @@ class YHPhotoBrowserViewController: UIViewController {
         self.indexPath = indexPath
         super.init(nibName: nil, bundle: nil)
     }
-
-    
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +44,12 @@ class YHPhotoBrowserViewController: UIViewController {
         pageLabel.text = "\(indexPath.item + 1) / \(urls.count)"
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: false)
+    }
+    
     
     // MAKR: - 按钮点击事件
     func close() {
@@ -54,7 +57,24 @@ class YHPhotoBrowserViewController: UIViewController {
     }
     
     func save() {
-        
+        // 获取正在显示的图片
+        let indexPath = collectionView.indexPathsForVisibleItems().first!
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! YHPhotoBrowserCell
+        if let image = cell.imageView.image {
+            // 保存 
+            
+            UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            
+        }
+    }
+    // - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;
+    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
+        if error != nil {
+            print("保存图片失败:\(error)")
+            SVProgressHUD.showErrorWithStatus("保存失败", maskType: SVProgressHUDMaskType.Black)
+            return
+        }
+        SVProgressHUD.showSuccessWithStatus("保存成功", maskType: SVProgressHUDMaskType.Black)
     }
     
     // MARK: - 准备UI
