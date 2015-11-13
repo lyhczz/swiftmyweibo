@@ -10,8 +10,12 @@ import UIKit
 import SDWebImage
 
 let YHStatusPictureViewCellSelectedPictureNotification = "YHStatusPictureViewCellSelectedPictureNotification"
+
 let YHStatusPictureViewCellSelectedPictureURLKey = "YHStatusPictureViewCellSelectedPictureURLKey"
-let YHStatusPictureViewCellSelectedPictureIndexPathKey = "YHStatusPictureViewCellSelectedPictureIndexPathKey"
+
+let YHStatusPictureViewCellSelectedPictureIndexPathKey = "YHStatusPictureViewCellSelectedPictureIndexKey"
+
+let YHStatusPictureViewCellSelectedPictureModelKey = "YHStatusPictureViewCellSelectedPictureModelKey"
 
 class YHStatusPictureView: UICollectionView {
 
@@ -137,8 +141,35 @@ extension YHStatusPictureView: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let count = status?.largePictureURLs?.count ?? 0
+        
+        // 创建模型数组
+        var models = [YHPhotoBrowserModel]()
+        
+        // 遍历,创建模型
+        for index in 0..<count {
+            let model = YHPhotoBrowserModel()
+            
+            // 设置url
+            model.imageUrl = status?.largePictureURLs![index]
+            // 获取对应的cell
+            let cell = collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)) as! YHStatusPictureViewCell
+            
+            // 设置imageView
+            model.imageView = cell.iconView
+            
+            // 添加到数组
+            models.append(model)
+        }
+        
+        let userInfo: [String: AnyObject] = [
+            YHStatusPictureViewCellSelectedPictureModelKey: models,
+            YHStatusPictureViewCellSelectedPictureIndexPathKey: indexPath
+        ]
+        
         // 需要将cell的点击事件传递给控制器,通过通知的方法
-        NSNotificationCenter.defaultCenter().postNotificationName(YHStatusPictureViewCellSelectedPictureNotification, object: self, userInfo: [YHStatusPictureViewCellSelectedPictureURLKey: status!.largePictureURLs!, YHStatusPictureViewCellSelectedPictureIndexPathKey: indexPath])
+        NSNotificationCenter.defaultCenter().postNotificationName(YHStatusPictureViewCellSelectedPictureNotification, object: self, userInfo: userInfo)
         
     }
     

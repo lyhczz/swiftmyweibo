@@ -121,8 +121,8 @@ class YHHomeController: YHBaseController {
     func pictureSelected(notification: NSNotification) {
         
         // 获取参数
-        guard let urls = notification.userInfo?[YHStatusPictureViewCellSelectedPictureURLKey] as? [NSURL] else {
-            print("没有urls")
+        guard let models = notification.userInfo?[YHStatusPictureViewCellSelectedPictureModelKey] as? [YHPhotoBrowserModel] else {
+            print("没有YHPhotoBrowserModel")
             return
         }
         guard let indexPath = notification.userInfo?[YHStatusPictureViewCellSelectedPictureIndexPathKey] as? NSIndexPath else {
@@ -131,7 +131,13 @@ class YHHomeController: YHBaseController {
         }
         
         // 弹出照片浏览器
-        let controller = YHPhotoBrowserViewController(urls: urls, indexPath: indexPath)
+        let controller = YHPhotoBrowserViewController(models: models, indexPath: indexPath)
+        
+        // 设置modal控制器的转场代理
+        controller.transitioningDelegate = controller
+        
+        // 设置转场样式
+        controller.modalPresentationStyle = UIModalPresentationStyle.Custom
         
         presentViewController(controller, animated: true, completion: nil)
         

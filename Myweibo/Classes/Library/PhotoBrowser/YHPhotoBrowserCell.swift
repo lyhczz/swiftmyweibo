@@ -110,9 +110,9 @@ class YHPhotoBrowserCell: UICollectionViewCell {
         scrollView.maximumZoomScale = 2
         scrollView.minimumZoomScale = YHPhotoBrowserCellminimumZoomScale
         scrollView.delegate = self
-        
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[scrollView]-15-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["scrollView": scrollView]))
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[scrollView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["scrollView": scrollView]))
+        scrollView.frame = CGRect(x: 0, y: 0, width: UIScreen.width(), height: UIScreen.height())
+//        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[scrollView]-15-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["scrollView": scrollView]))
+//        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[scrollView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["scrollView": scrollView]))
         
         // 加载指示器
         contentView.addConstraint(NSLayoutConstraint(item: indicator, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0))

@@ -16,7 +16,7 @@ class YHPhotoBrowserViewController: UIViewController {
     let YHPhotoBrowserViewCellIdentifier = "YHPhotoBrowserViewCellIdentifier"
     
     /// 要显示大图的urls数组
-    private var urls: [NSURL]
+    private var photoModels: [YHPhotoBrowserModel]
     
     /// indexPath
     var indexPath: NSIndexPath
@@ -28,8 +28,8 @@ class YHPhotoBrowserViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    init(urls: [NSURL], indexPath: NSIndexPath) {
-        self.urls = urls
+    init(models: [YHPhotoBrowserModel], indexPath: NSIndexPath) {
+        self.photoModels = models
         self.indexPath = indexPath
         super.init(nibName: nil, bundle: nil)
     }
@@ -41,7 +41,7 @@ class YHPhotoBrowserViewController: UIViewController {
         
         prepareUI()
         
-        pageLabel.text = "\(indexPath.item + 1) / \(urls.count)"
+        pageLabel.text = "\(indexPath.item + 1) / \(photoModels.count)"
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -112,7 +112,7 @@ class YHPhotoBrowserViewController: UIViewController {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[cb(35)]-8-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[sb(35)]-8-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
         // h
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-8-[cb(75)]-(>=0)-[sb(75)]-8-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-8-[cb(75)]-(>=0)-[sb(75)]-23-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
         
         prepareCollectionView()
     }
@@ -144,7 +144,7 @@ class YHPhotoBrowserViewController: UIViewController {
     
     // MARK: - 懒加载控件
     /// collectionView
-    private lazy var collectionView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.layout)
+    lazy var collectionView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.layout)
     
     /// 关闭按钮
     private lazy var closeButton: UIButton = UIButton(bkgImageName: "health_button_orange_line", title: "关闭", titleColor: UIColor.whiteColor(), fontSzie: 12)
@@ -157,19 +157,19 @@ class YHPhotoBrowserViewController: UIViewController {
 }
 
 // MARK: - 扩展
-extension YHPhotoBrowserViewController: UICollectionViewDelegate,UICollectionViewDataSource {
+extension YHPhotoBrowserViewController: UICollectionViewDelegate,UICollectionViewDataSource, UIViewControllerTransitioningDelegate {
     
     // 返回cell的数量
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return urls.count
+        return photoModels.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(YHPhotoBrowserViewCellIdentifier, forIndexPath: indexPath) as! YHPhotoBrowserCell
         // 获得对应的url
-        let url = urls[indexPath.item]
+//        let url = urls[indexPath.item]
         // 赋值给cell
-        cell.url = url
+        cell.url = photoModels[indexPath.item].imageUrl
         
 //        cell.backgroundColor = UIColor.randomColor()
         
@@ -184,9 +184,110 @@ extension YHPhotoBrowserViewController: UICollectionViewDelegate,UICollectionVie
             self.indexPath = indexPath
             
             // 设置页码
-            self.pageLabel.text = "\(indexPath.item + 1) / \(urls.count)"
+            self.pageLabel.text = "\(indexPath.item + 1) / \(photoModels.count)"
         }
     }
+    
+    // MARK: - 实现 UIViewControllerTransitioningDelegate 来控制转场动画
+    // 返回控制modal动画的对象
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return YHPhotoBrowserModalAnimation()
+    }
+    
+    // 返回控制 dismiss 动画的对象
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return YHPhotoBrowserDismissAnimation()
+    }
+}
+
+extension YHPhotoBrowserViewController {
+    /// 提供过渡视图
+    func modalTempImageView() -> UIImageView {
+        // 获取模型
+        let model = photoModels[indexPath.item]
+        
+        // 根据模型里面的imageView生成过渡视图
+        let imageView = UIImageView(image: model.imageView?.image)
+        
+        // 设置相关属性
+        imageView.contentMode = model.imageView!.contentMode
+        imageView.clipsToBounds = true
+        
+        // 设置过渡视图的franme等于缩略图的frame
+//        imageView.frame = model.imageView!.frame
+         imageView.frame = model.imageView!.superview!.convertRect(model.imageView!.frame, toCoordinateSpace: view)
+        
+        return imageView
+    }
+    
+    /// 计算放大后的frame,图片等比例放大到宽度等于屏幕宽度
+    func modalTargetFrame() -> CGRect {
+        // 获取图片
+        let image = photoModels[indexPath.item].imageView!.image!
+        
+        // 计算高度
+        // 放大后的高度 / 放大后的宽度 = 放大前的高度 / 放大前的宽度
+        var newHeight = UIScreen.width() * image.size.height / image.size.width
+        
+        var offestY: CGFloat = 0
+        if newHeight < UIScreen.height() {
+            // 短图,居中
+            offestY = (UIScreen.height() - newHeight) * 0.5
+        } else {
+            // 长图,顶部开始显示,高度等于屏幕的高度
+            newHeight = UIScreen.height()
+        }
+        
+        return CGRect(x: 0, y: offestY, width: UIScreen.width(), height: newHeight)
+    }
+    
+    /// 提供缩小的过渡视图
+    func dismissTempImageView() -> UIImageView {
+        
+        // 获取当前的索引
+        let showIndexPath = collectionView.indexPathsForVisibleItems().first!
+        
+        // 获得正在显示的cell
+        let cell = collectionView.cellForItemAtIndexPath(showIndexPath) as! YHPhotoBrowserCell
+        
+        // 获得正在显示的imageView
+        let showImageView = cell.imageView
+        
+        // 生成过渡视图
+        let tempImageView = UIImageView(image: showImageView.image)
+        
+        // 设置相关属性
+        tempImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        tempImageView.clipsToBounds = true
+        
+        // 将cell的imageView坐标系转换到当前控制器的view的坐标系
+        let rect = showImageView.superview?.convertRect(showImageView.frame, toCoordinateSpace: view)
+        tempImageView.frame = rect!
+        
+        return tempImageView
+    }
+    
+    /**
+    缩小后的frame,缩略图cell的位置
+    - returns: 缩略图cell的位置
+    */
+    func dismissTargetFrame() -> CGRect {
+        // 获取正在显示的cell的indexPath
+        let showIndexPath = collectionView.indexPathsForVisibleItems().first
+        
+        // 获取对应的模型
+        let model = photoModels[showIndexPath!.item]
+        
+        // 小图
+        let imageView = model.imageView
+        
+        // 坐标系转换
+        let rect = imageView?.convertRect(imageView!.frame, toCoordinateSpace: view)
+        
+        return rect!
+    }
+    
 }
 
 
